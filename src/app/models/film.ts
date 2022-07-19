@@ -1,5 +1,8 @@
 import {Planet} from "./planet";
 import {People} from "./people";
+import {Starship} from "./startship";
+import {Specie} from "./specie";
+import {Vehicle} from "./vehicle";
 
 export interface Film {
   characters: People[];
@@ -11,9 +14,9 @@ export interface Film {
   planets: Planet[];
   producer: string;
   release_date: string;
-  // speacies: Specie[];
-  // starships: Starship[];
+  speacies: Specie[];
+  starships: Starship[];
   title: string;
   url: string;
-  // vehicles: Vehicle[];
+  vehicles: Vehicle[];
 }
