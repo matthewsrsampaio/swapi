@@ -1,22 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { People } from "../../models/people";
-import {PeopleService} from "../../services/people.services";
+import {Component, OnInit} from '@angular/core';
+import {People} from "../../models/people";
+import {ServiceServices} from "../../service.services";
+import {ActivatedRoute} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
-  styleUrls: ['./people.component.css']
+  styleUrls: ['./people.component.css'],
+  providers: [ServiceServices]
 })
 export class PeopleComponent implements OnInit {
-  private peoples!: People;
+  people: People[] = [];
+  displayedColumns: string[] = ['name', 'gender', 'skinColor', 'hairColor', 'eyeColor', 'height', 'mass', 'birth', 'created', 'edited'];
+  dataSource = new MatTableDataSource(this.people);
+  clickedRows = new Set<People>();
 
-  constructor(private peopleServices: PeopleService) { }
+  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.peopleServices.getAllPeople().subscribe((data: People) => {
-      this.peoples = data;
-      console.log(this.peoples);
-    });
+  ngOnInit() {
+    this.onGetAllPeople();
+    this.applyFilter(event);
+  }
+
+  onGetAllPeople() {
+    this.serviceServices.getAllPeople()
+      .subscribe((data) => {
+        this.people = data.results;
+        console.log(this.people);
+      });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

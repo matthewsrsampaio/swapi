@@ -14,7 +14,7 @@ export interface Film {
   planets: Planet[];
   producer: string;
   release_date: string;
-  speacies: Specie[];
+  species: Specie[];
   starships: Starship[];
   title: string;
   url: string;

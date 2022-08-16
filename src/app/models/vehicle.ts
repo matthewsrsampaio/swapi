@@ -2,6 +2,9 @@ import {People} from "./people";
 import {Film} from "./film";
 
 export interface Vehicle {
+  name: string;
+  model: string;
+  passengers: number;
   cargo_capacity: string;
   consumables: string;
   cost_in_credits: string;
@@ -11,9 +14,6 @@ export interface Vehicle {
   length: string;
   manufacturer: string;
   max_atmosphering_speed: string;
-  model: string;
-  name: string;
-  passengers: number;
   pilots: People[];
   films: Film[];
   url: string;

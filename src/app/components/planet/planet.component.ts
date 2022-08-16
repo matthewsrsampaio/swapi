@@ -1,49 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { Planet} from "../../models/planet";
-import {PlanetServices} from "../../services/planet.services";
+import {Component, OnInit} from '@angular/core';
+import {Planet} from "../../models/planet";
+import {ServiceServices} from "../../service.services";
+import {ActivatedRoute} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 import {MatTableDataSource} from '@angular/material/table';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 
 @Component({
   selector: 'app-planet',
   templateUrl: './planet.component.html',
-  styleUrls: ['./planet.component.css']
+  styleUrls: ['./planet.component.css'],
+  providers: [ServiceServices]
 })
 export class PlanetComponent implements OnInit {
-  // private planets!: Planet;
+  planets: Planet[] = [];
+  displayedColumns: string[] = ['name', 'climate', 'gravity', 'rotation', 'diameter', 'orbital', 'population', 'surfaceWater', 'terrain', 'created', 'edited'];
+  dataSource = new MatTableDataSource(this.planets);
+  clickedRows = new Set<Planet>();
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
-  // constructor(private planetServices : PlanetServices) {}
+  ngOnInit() {
+    this.onGetAllPlanets();
+  }
 
-  ngOnInit(): void {
-    // this.planetServices.getAllPlanets().subscribe((data:Planet) => {
-    //   this.planets = data;
-    //   console.log(this.planets)
-    // });
+  onGetAllPlanets() {
+    this.serviceServices.getAllPlanets()
+      .subscribe((data) => {
+        this.planets = data.results;
+        console.log(this.planets);
+      });
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(this.clickedRows);
   }
+
 }

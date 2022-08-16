@@ -1,3 +1,17 @@
-.example-spacer {
-  flex: 1 1 auto;
+button {
+  background-color: yellow;
+  margin-left: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.active {
+  background-color: mediumspringgreen;
+}
+
+#btn {
+  text-align: center;
+  margin-left: 28%;
 }

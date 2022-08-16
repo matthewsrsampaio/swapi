@@ -18,5 +18,5 @@ export interface People {
   species: Specie[];
   starships: Starship[];
   url: string;
-  vehicules: string[];
+  vehicles: string[];
 }

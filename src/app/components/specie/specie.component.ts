@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Specie } from "../../models/specie";
-import { SpecieServices } from "../../services/specie.services";
+import {ServiceServices} from "../../service.services";
+import {MatTableDataSource} from "@angular/material/table";
+import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-specie',
@@ -8,15 +11,27 @@ import { SpecieServices } from "../../services/specie.services";
   styleUrls: ['./specie.component.css']
 })
 export class SpecieComponent implements OnInit {
-  private species!: Specie;
+  species: Specie[] = [];
+  displayedColumns: string[] = ['name', 'skinColor', 'eyeColor', 'hairColor', 'averageHeight', 'averageLifespan', 'classification', 'language', 'designation', 'created', 'edited'];
+  dataSource = new MatTableDataSource(this.species);
+  clickedRows = new Set<Specie>();
 
-  constructor(private specieServices: SpecieServices) { }
+  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.specieServices.getAllSpecie().subscribe((data:Specie) => {
-      this.species = data;
-      console.log(this.species);
-    });
+  ngOnInit() {
+    this.onGetAllEspecies();
   }
 
+  onGetAllEspecies() {
+    this.serviceServices.getAllSpecie()
+      .subscribe((data) => {
+        this.species = data.results;
+        console.log(this.species);
+      });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

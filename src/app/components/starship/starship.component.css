@@ -1,0 +1,33 @@
+table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  font-weight: bold;;
+}
+
+#head {
+  font-size: 70px;
+  -webkit-text-fill-color: mediumspringgreen;
+  -webkit-text-stroke: thin;
+  color: mediumspringgreen;
+  margin-top: 50px;
+  text-align: center;
+}
+
+table {
+  opacity: 98%;
+}

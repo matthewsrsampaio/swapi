@@ -1,6 +1,11 @@
-<p>
-  <mat-toolbar color="primary">
-    <img src="assets/starwars.png" style="width: 8%">
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <img src="assets/starwars.png" routerLink="/" style="width: 8%">
+  <div id="btn">
+    <button routerLinkActive="active"><a routerLink="/planets">Planets</a></button>
+    <button routerLinkActive="active"><a routerLink="/peoples">Peoples</a></button>
+    <button routerLinkActive="active"><a routerLink="/films">Films</a></button>
+    <button routerLinkActive="active"><a routerLink="/species">Species</a></button>
+    <button routerLinkActive="active"><a routerLink="/starships">Starships</a></button>
+    <button routerLinkActive="active"><a routerLink="/vehicles">Vehicles</a></button>
+  </div>
+</mat-toolbar>
