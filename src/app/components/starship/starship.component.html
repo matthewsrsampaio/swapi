@@ -105,8 +105,9 @@
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
-        <p>Films: {{clickedRow.films}}</p>
-        <p>Pilots: {{clickedRow.pilots}}</p>
+        <h2>Name: {{clickedRow.name}}</h2>
+        <p id="pap">Films: </p><p>{{clickedRow.films}}</p>
+        <p id="pap">Pilots: </p><p>{{clickedRow.pilots}}</p>
       </li>
     </ul>
   </div>

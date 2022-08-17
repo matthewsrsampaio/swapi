@@ -84,9 +84,9 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div class="card-header" style="color: yellow; margin-left: 5%; margin-bottom: 5%;">
+<div class="card-header" style="margin-left: 5%; margin-bottom: 5%;">
   <div *ngIf="clickedRows.size">
-    <h3>
+    <h3 id="pap">
       Requests I failed
     </h3>
   </div>
@@ -96,8 +96,9 @@
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
-        <p>Films: {{clickedRow.films}}</p>
-        <p>Residents: {{clickedRow.residents}}</p>
+        <h2>Name: {{clickedRow.name}}</h2>
+        <p id="pap">Films: </p><p>{{clickedRow.films}}</p>
+        <p id="pap">Residents: </p><p>{{clickedRow.residents}}</p>
       </li>
     </ul>
   </div>

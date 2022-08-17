@@ -80,9 +80,9 @@
 
 <!--margin-bottom aqui está como uma gambiarra pra consertar a parte de "Requests I failed"-->
 <!--que não estava aparecendo.-->
-<div class="card-header" style="color: yellow; margin-left: 5%; margin-bottom: 5%">
+<div class="card-header" style="margin-left: 5%;">
   <div *ngIf="clickedRows.size">
-    <h3>
+    <h3 id="pap">
       Requests I failed
     </h3>
   </div>
@@ -92,10 +92,11 @@
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
-        <p>Films: {{clickedRow.films}}</p>
-        <p>Species: {{clickedRow.species}}</p>
-        <p>Starships: {{clickedRow.starships}}</p>
-        <p>Vehicles: {{clickedRow.vehicles}}</p>
+        <h2>Name: {{clickedRow.name}}</h2>
+        <p id="pap">Films: {{clickedRow.films}}</p>
+        <p id="pap">Species: {{clickedRow.species}}</p>
+        <p id="pap">Starships: {{clickedRow.starships}}</p>
+        <p id="pap">Vehicles: {{clickedRow.vehicles}}</p>
       </li>
     </ul>
   </div>

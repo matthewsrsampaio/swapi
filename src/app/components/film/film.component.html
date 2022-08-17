@@ -70,9 +70,9 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div class="card-header" style="color: yellow; margin-left: 5%">
+<div class="card-header" style="margin-left: 5%">
   <div *ngIf="clickedRows.size">
-    <h3>
+    <h3 id="pap">
       Requests I failed
     </h3>
   </div>
@@ -82,10 +82,11 @@
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
-        <p>Planetas: {{clickedRow.planets}}</p>
-        <p>Species: {{clickedRow.starships}}</p>
-        <p>Starships: {{clickedRow.starships}}</p>
-        <p>Vehicles: {{clickedRow.vehicles}}</p>
+        <h2>Titulo: {{clickedRow.title}}</h2>
+        <p id="pap">Planetas: </p><p>{{clickedRow.planets}}</p>
+        <p id="pap">Species: </p><p>{{clickedRow.starships}}</p>
+        <p id="pap">Starships: </p><p>{{clickedRow.starships}}</p>
+        <p id="pap">Vehicles: </p><p>{{clickedRow.vehicles}}</p>
       </li>
     </ul>
   </div>

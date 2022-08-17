@@ -18,6 +18,7 @@
 
 .demo-row-is-clicked {
   font-weight: bold;
+  background-color: mediumspringgreen;
 }
 
 .mat-form-field {
@@ -39,7 +40,14 @@ th {
   margin-top: 0.5%;
   text-align: center;
 }
-
 p {
+  color: yellow;
+}
+
+#pap {
   color: mediumspringgreen;
+}
+
+h2 {
+  color: yellow;
 }
