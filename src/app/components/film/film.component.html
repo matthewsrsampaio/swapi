@@ -1,11 +1,11 @@
 <h1 id="head">FILMS</h1>
 
-<mat-form-field appearance="legacy" class="filter">
-  <mat-label style="color: white">Filter</mat-label>
-  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>
-</mat-form-field>
+<!--<mat-form-field appearance="legacy" class="filter">-->
+<!--  <mat-label style="color: white">Filter</mat-label>-->
+<!--  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>-->
+<!--</mat-form-field>-->
 
-<table mat-table [dataSource]="this.films" class="mat-elevation-z8 bg-opacity-50">
+<table mat-table [dataSource]="this.films" class="mat-elevation-z8 demo-table bg-opacity-50">
 
   <!-- Name Column -->
   <ng-container matColumnDef="title">
@@ -28,7 +28,7 @@
   <!-- Rotation Column -->
   <ng-container matColumnDef="episode">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Episode </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film" style="text-align: center"> {{film.episode_id}} </td>
+    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.episode_id}} </td>
   </ng-container>
 
   <ng-container matColumnDef="opening">
@@ -50,12 +50,14 @@
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
     <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.edited | date}} </td>
   </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row
-      (click)="clickedRows.add(row)"
-      (dblclick)="clickedRows.delete(row)"
-      [class.demo-row-is-clicked]="clickedRows.has(row)"
-      *matRowDef="let row; columns: displayedColumns;"
+  <tr
+    mat-row
+    (click)="clickedRows.add(row)"
+    (dblclick)="clickedRows.delete(row)"
+    [class.demo-row-is-clicked]="clickedRows.has(row)"
+    *matRowDef="let row; columns: displayedColumns"
   ></tr>
 
   <!-- Row shown when there is no matching data. -->
@@ -63,3 +65,24 @@
   <!--    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>-->
   <!--  </tr>-->
 </table>
+
+<div class="card-header" style="color: yellow; margin-left: 5%">
+  <div>
+    <h3>
+      Requests I failed
+    </h3>
+  </div>
+<!--  <div *ngIf="!clickedRows.size">-->
+<!--    <p>Failed requests will be logged here</p>-->
+<!--  </div>-->
+  <div class="card-body">
+    <ul>
+      <li *ngFor="let clickedRow of clickedRows">
+        <p>Planetas: {{clickedRow.planets}}</p>
+        <p>Species: {{clickedRow.starships}}</p>
+        <p>Starships: {{clickedRow.starships}}</p>
+        <p>Vehicles: {{clickedRow.vehicles}}</p>
+      </li>
+    </ul>
+  </div>
+</div>

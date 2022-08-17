@@ -1,11 +1,6 @@
 <h1 id="head">STARSHIPS</h1>
 
-<mat-form-field appearance="legacy" class="filter">
-  <mat-label style="color: white">Filter</mat-label>
-  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>
-</mat-form-field>
-
-<table mat-table [dataSource]="this.starships" class="mat-elevation-z8 bg-opacity-50">
+<table mat-table [dataSource]="this.starships" class="mat-elevation-z8 demo-table bg-opacity-50">
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
@@ -93,3 +88,22 @@
   <!--    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>-->
   <!--  </tr>-->
 </table>
+
+<div class="card-header" style="color: yellow; margin-left: 5%; margin-bottom: 5%">
+  <div>
+    <h3>
+      Requests I failed
+    </h3>
+  </div>
+  <!--  <div *ngIf="!clickedRows.size">-->
+  <!--    <p>Failed requests will be logged here</p>-->
+  <!--  </div>-->
+  <div class="card-body">
+    <ul>
+      <li *ngFor="let clickedRow of clickedRows">
+        <p>Films: {{clickedRow.films}}</p>
+        <p>Pilots: {{clickedRow.pilots}}</p>
+      </li>
+    </ul>
+  </div>
+</div>

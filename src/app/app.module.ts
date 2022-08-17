@@ -19,6 +19,8 @@ import {PeopleComponent} from "./components/people/people.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     VehicleComponent,
     SpecieComponent,
     NavbarComponent,
-    PeopleComponent
+    PeopleComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
 <h1 id="head">PEOPLES</h1>
 
-<mat-form-field appearance="legacy" class="filter">
-  <mat-label style="color: white">Filter</mat-label>
-  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>
-</mat-form-field>
+<!--<mat-form-field appearance="legacy" class="filter">-->
+<!--  <mat-label style="color: white">Filter</mat-label>-->
+<!--  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>-->
+<!--</mat-form-field>-->
 
-<table mat-table [dataSource]="this.people" class="mat-elevation-z8 bg-opacity-50">
+<table mat-table [dataSource]="this.people" class="mat-elevation-z8 demo-table bg-opacity-50">
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
@@ -74,3 +74,23 @@
   <!--  </tr>-->
 </table>
 
+<div class="card-header" style="color: yellow; margin-left: 5%; margin-bottom: 5%">
+  <div>
+    <h3>
+      Requests I failed
+    </h3>
+  </div>
+  <!--  <div *ngIf="!clickedRows.size">-->
+  <!--    <p>Failed requests will be logged here</p>-->
+  <!--  </div>-->
+  <div class="card-body">
+    <ul>
+      <li *ngFor="let clickedRow of clickedRows">
+        <p>Films: {{clickedRow.films}}</p>
+        <p>Species: {{clickedRow.species}}</p>
+        <p>Starships: {{clickedRow.starships}}</p>
+        <p>Vehicles: {{clickedRow.vehicles}}</p>
+      </li>
+    </ul>
+  </div>
+</div>

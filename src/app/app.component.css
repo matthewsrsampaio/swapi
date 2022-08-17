@@ -1,17 +1,1 @@
-#foot {
-  padding-left: 3%;
-  position: fixed;
-  top: 94%;
-  text-align: center;
-}
 
-#footMessage {
-  text-align: center;
-  font-size: medium;
-}
-
-p {
-  color: yellow;
-  text-shadow: mediumspringgreen;
-  outline-style: ridge;
-}

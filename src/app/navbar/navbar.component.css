@@ -15,3 +15,7 @@ a {
   text-align: center;
   margin-left: 28%;
 }
+
+mat-toolbar {
+  min-width: 100%;
+}
