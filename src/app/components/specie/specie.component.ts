@@ -15,6 +15,7 @@ export class SpecieComponent implements OnInit {
   displayedColumns: string[] = ['name', 'skinColor', 'eyeColor', 'hairColor', 'averageHeight', 'averageLifespan', 'classification', 'language', 'designation', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.species);
   clickedRows = new Set<Specie>();
+  isLoading = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
@@ -25,6 +26,7 @@ export class SpecieComponent implements OnInit {
   onGetAllEspecies() {
     this.serviceServices.getAllSpecie()
       .subscribe((data) => {
+        this.isLoading = false;
         this.species = data.results;
         console.log(this.species);
       });

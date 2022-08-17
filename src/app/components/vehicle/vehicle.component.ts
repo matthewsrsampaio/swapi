@@ -14,6 +14,7 @@ export class VehicleComponent implements OnInit {
   vehicles!: Vehicle[];displayedColumns: string[] = ['name', 'model', 'passengers', 'crew', 'class', 'cargoCapac', 'consumables', 'cost', 'length', 'manufacturer', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.vehicles);
   clickedRows = new Set<Vehicle>();
+  isLoading = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
@@ -24,6 +25,7 @@ export class VehicleComponent implements OnInit {
   onGetAllVehicles() {
     this.serviceServices.getAllVehicle()
       .subscribe((data) => {
+        this.isLoading = false;
         this.vehicles = data.results;
         console.log(this.vehicles);
       });

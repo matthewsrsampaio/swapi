@@ -16,6 +16,7 @@ export class StarshipComponent implements OnInit {
   displayedColumns: string[] = ['name', 'model', 'mglt', 'cargo', 'consumable', 'cost', 'crew', 'hyperdrive', 'length', 'manufacturer', 'atmSpeed', 'passengers', 'created','edited'];
   dataSource = new MatTableDataSource(this.starships);
   clickedRows = new Set<Starship>();
+  isLoading = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
@@ -26,6 +27,7 @@ export class StarshipComponent implements OnInit {
   onGetAllStarships() {
     this.serviceServices.getAllStarships()
       .subscribe((data) => {
+        this.isLoading = false;
         this.starships = data.results;
         console.log(this.starships);
       });

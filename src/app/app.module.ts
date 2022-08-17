@@ -21,6 +21,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     MatCardModule,
     MatBottomSheetModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

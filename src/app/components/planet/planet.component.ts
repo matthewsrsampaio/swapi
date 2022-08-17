@@ -16,6 +16,7 @@ export class PlanetComponent implements OnInit {
   displayedColumns: string[] = ['name', 'climate', 'gravity', 'rotation', 'diameter', 'orbital', 'population', 'surfaceWater', 'terrain', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.planets);
   clickedRows = new Set<Planet>();
+  isLoading = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
@@ -26,6 +27,7 @@ export class PlanetComponent implements OnInit {
   onGetAllPlanets() {
     this.serviceServices.getAllPlanets()
       .subscribe((data) => {
+        this.isLoading = false;
         this.planets = data.results;
         console.log(this.planets);
       });

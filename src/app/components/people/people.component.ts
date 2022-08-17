@@ -16,6 +16,7 @@ export class PeopleComponent implements OnInit {
   displayedColumns: string[] = ['name', 'gender', 'skinColor', 'hairColor', 'eyeColor', 'height', 'mass', 'birth', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.people);
   clickedRows = new Set<People>();
+  isLoading = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
@@ -27,6 +28,7 @@ export class PeopleComponent implements OnInit {
   onGetAllPeople() {
     this.serviceServices.getAllPeople()
       .subscribe((data) => {
+        this.isLoading = false;
         this.people = data.results;
         console.log(this.people);
       });

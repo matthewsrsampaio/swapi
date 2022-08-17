@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Film} from "../../models/film";
 import {ServiceServices} from "../../service.services";
-import {MatTableDataSource} from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {isDataSource} from "@angular/cdk/collections";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-film',
@@ -14,8 +13,9 @@ import {isDataSource} from "@angular/cdk/collections";
 export class FilmComponent implements OnInit {
   films: Film[] = [];
   displayedColumns: string[] = ['title', 'director', 'producer', 'episode', 'opening', 'release', 'created', 'edited'];
-  // dataSource = new MatTableDataSource(this.films);
+  dataSource = new MatTableDataSource(this.films);
   clickedRows = new Set<Film>();
+  isLoading = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
 
@@ -26,6 +26,7 @@ export class FilmComponent implements OnInit {
   onGetAllFilms() {
     this.serviceServices.getAllFilm()
       .subscribe((data) => {
+        this.isLoading = false;
         this.films = data.results;
         console.log(this.films);
       });
