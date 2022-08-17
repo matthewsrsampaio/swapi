@@ -78,8 +78,10 @@
   <mat-spinner></mat-spinner>
 </div>
 
+<!--margin-bottom aqui está como uma gambiarra pra consertar a parte de "Requests I failed"-->
+<!--que não estava aparecendo.-->
 <div class="card-header" style="color: yellow; margin-left: 5%; margin-bottom: 5%">
-  <div>
+  <div *ngIf="clickedRows.size">
     <h3>
       Requests I failed
     </h3>
@@ -98,3 +100,4 @@
     </ul>
   </div>
 </div>
+<app-footer></app-footer>
