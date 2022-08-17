@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Film} from "../../models/film";
 import {ServiceServices} from "../../service.services";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
@@ -17,7 +16,7 @@ export class FilmComponent implements OnInit {
   clickedRows = new Set<Film>();
   isLoading = true;
 
-  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
   ngOnInit() {
     this.onGetAllFilms();

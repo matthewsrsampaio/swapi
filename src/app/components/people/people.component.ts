@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {People} from "../../models/people";
 import {ServiceServices} from "../../service.services";
-import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {MatTableDataSource} from '@angular/material/table';
 
@@ -18,11 +17,10 @@ export class PeopleComponent implements OnInit {
   clickedRows = new Set<People>();
   isLoading = true;
 
-  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
   ngOnInit() {
     this.onGetAllPeople();
-    this.applyFilter(event);
   }
 
   onGetAllPeople() {
@@ -33,10 +31,10 @@ export class PeopleComponent implements OnInit {
         console.log(this.people);
       });
   }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  //
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
 
 }
