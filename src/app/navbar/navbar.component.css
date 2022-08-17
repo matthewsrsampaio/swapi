@@ -3,12 +3,17 @@ button {
   margin-left: 5px;
 }
 
+button:hover {
+  background-color: mediumspringgreen;
+  transition: 0.2s;
+}
+
 a {
   text-decoration: none;
 }
 
 .active {
-  background-color: mediumspringgreen;
+  background-color: goldenrod;
 }
 
 #btn {
