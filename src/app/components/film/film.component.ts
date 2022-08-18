@@ -26,14 +26,14 @@ export class FilmComponent implements OnInit {
     this.serviceServices.getAllFilm()
       .subscribe((data) => {
         this.isLoading = false;
-        this.films = data.results;
+        this.dataSource = new MatTableDataSource(data.results);
         console.log(this.films);
       });
   }
-  //
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).defaultValue;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

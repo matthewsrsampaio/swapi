@@ -11,12 +11,13 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent implements OnInit {
-  vehicles!: Vehicle[];displayedColumns: string[] = ['name', 'model', 'passengers', 'crew', 'class', 'cargoCapac', 'consumables', 'cost', 'length', 'manufacturer', 'created', 'edited'];
+  vehicles!: Vehicle[];
+  displayedColumns: string[] = ['name', 'model', 'passengers', 'crew', 'class', 'cargoCapac', 'consumables', 'cost', 'length', 'manufacturer', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.vehicles);
   clickedRows = new Set<Vehicle>();
   isLoading = true;
 
-  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
   ngOnInit() {
     this.onGetAllVehicles();
@@ -26,7 +27,7 @@ export class VehicleComponent implements OnInit {
     this.serviceServices.getAllVehicle()
       .subscribe((data) => {
         this.isLoading = false;
-        this.vehicles = data.results;
+        this.dataSource = new MatTableDataSource(data.results);
         console.log(this.vehicles);
       });
   }

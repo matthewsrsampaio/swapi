@@ -18,7 +18,7 @@ export class ServiceServices {
   private readonly endpointStarships = 'https://swapi.dev/api/starships/';
   private readonly endpointVehicles = 'https://swapi.dev/api/vehicles/';
 
-  constructor(public http: HttpClient, private route: ActivatedRoute) {}
+  constructor(public http: HttpClient) {}
 
   getAllFilm(): Observable<any> {
     return this.http.get<Film>(this.endpointFilms);

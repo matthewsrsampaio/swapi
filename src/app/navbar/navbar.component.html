@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <img src="assets/starwars.png" routerLink="/home" style="width: 8%">
-  <div id="btn">
-    <button routerLinkActive="active"><a routerLink="/planets">Planets</a></button>
-    <button routerLinkActive="active"><a routerLink="/peoples">Peoples</a></button>
-    <button routerLinkActive="active"><a routerLink="/films">Films</a></button>
-    <button routerLinkActive="active"><a routerLink="/species">Species</a></button>
-    <button routerLinkActive="active"><a routerLink="/starships">Starships</a></button>
-    <button routerLinkActive="active"><a routerLink="/vehicles">Vehicles</a></button>
-  </div>
+    <div class="example-button-row" id="btn">
+      <button mat-raised-button color="accent" routerLinkActive="active" routerLink="/films">Films</button>
+      <button mat-raised-button color="accent" routerLinkActive="active" routerLink="/peoples">Peoples</button>
+      <button mat-raised-button color="accent" routerLinkActive="active" routerLink="/planets">Planets</button>
+      <button mat-raised-button color="accent" routerLinkActive="active" routerLink="/species">Species</button>
+      <button mat-raised-button color="accent" routerLinkActive="active" routerLink="/starships">Starships</button>
+      <button mat-raised-button color="accent" routerLinkActive="active" routerLink="/vehicles">Vehicles</button>
+    </div>
 </mat-toolbar>

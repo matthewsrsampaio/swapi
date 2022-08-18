@@ -1,11 +1,13 @@
 <h1 id="head">PEOPLES</h1>
 
-<!--<mat-form-field appearance="legacy" class="filter">-->
-<!--  <mat-label style="color: white">Filter</mat-label>-->
-<!--  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>-->
-<!--</mat-form-field>-->
+<!--Filter-->
+<mat-form-field appearance="legacy" class="filter">
+  <mat-label>Filter</mat-label>
+  <input (keyup)="applyFilter($event)" matInput style="color: mediumspringgreen" #input>
+</mat-form-field>
 
-<table mat-table [dataSource]="this.people" class="mat-elevation-z8 demo-table bg-opacity-50">
+<!--Table start with the information about the data I'm pulling-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table bg-opacity-50">
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
@@ -31,35 +33,43 @@
     <td mat-cell style="text-align: center" *matCellDef="let person"> {{person.hair_color}} </td>
   </ng-container>
 
+  <!--Eye colour Column-->
   <ng-container matColumnDef="eyeColor">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Eye Color </th>
     <td mat-cell style="text-align: center" *matCellDef="let person"> {{person.eye_color}} </td>
   </ng-container>
 
+  <!--Height Column-->
   <ng-container matColumnDef="height">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Height </th>
     <td mat-cell style="text-align: center" *matCellDef="let person"> {{person.height}}cm </td>
   </ng-container>
 
+  <!--Mass Column-->
   <ng-container matColumnDef="mass">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Mass </th>
     <td mat-cell style="text-align: center" *matCellDef="let person"> {{person.mass}}Kg </td>
   </ng-container>
 
+  <!--Birth year Column-->
   <ng-container matColumnDef="birth">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Birth year </th>
     <td mat-cell style="text-align: center" *matCellDef="let person"> {{person.birth_year}} </td>
   </ng-container>
 
+  <!--Created Column-->
   <ng-container matColumnDef="created">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Created </th>
     <td mat-cell style="text-align: center" *matCellDef="let person"> {{person.created | date}} </td>
   </ng-container>
 
+  <!--Edited Column-->
   <ng-container matColumnDef="edited">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
     <td mat-cell style="text-align: center" *matCellDef="let person"> {{person.edited | date}} </td>
   </ng-container>
+
+  <!--Table's click control-->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row
       (click)="clickedRows.add(row)"
@@ -69,26 +79,24 @@
   ></tr>
 
   <!-- Row shown when there is no matching data. -->
-  <!--  <tr class="mat-row" *matNoDataRow>-->
-  <!--    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>-->
-  <!--  </tr>-->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
+    </tr>
+
 </table>
 
+<!--Spinner-->
 <div style="display: flex; justify-content: center" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
-<!--margin-bottom aqui está como uma gambiarra pra consertar a parte de "Requests I failed"-->
-<!--que não estava aparecendo.-->
+<!--Failed information that pops when a row is clicked-->
 <div class="card-header" style="margin-left: 5%;">
   <div *ngIf="clickedRows.size">
     <h3 id="pap">
       Requests I failed
     </h3>
   </div>
-<!--    <div *ngIf="!clickedRows.size">-->
-<!--      <p>Failed requests will be logged here</p>-->
-<!--    </div>-->
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">

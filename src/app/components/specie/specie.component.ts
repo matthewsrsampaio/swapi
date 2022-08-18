@@ -27,7 +27,7 @@ export class SpecieComponent implements OnInit {
     this.serviceServices.getAllSpecie()
       .subscribe((data) => {
         this.isLoading = false;
-        this.species = data.results;
+        this.dataSource = new MatTableDataSource(data.results);
         console.log(this.species);
       });
   }

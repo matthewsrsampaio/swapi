@@ -1,11 +1,13 @@
 <h1 id="head">PLANETS</h1>
 
-<!--<mat-form-field appearance="legacy" class="filter">-->
-<!--  <mat-label style="color: white">Filter</mat-label>-->
-<!--  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>-->
-<!--</mat-form-field>-->
+<!--Filter-->
+<mat-form-field appearance="legacy" class="filter">
+  <mat-label>Filter</mat-label>
+  <input (keyup)="applyFilter($event)" matInput style="color: mediumspringgreen" #input>
+</mat-form-field>
 
-<table mat-table [dataSource]="this.planets" class="mat-elevation-z8 demo-table bg-opacity-50">
+<!--Table start with the information about the data I'm pulling-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table bg-opacity-50">
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
@@ -31,40 +33,49 @@
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.rotation_period}} </td>
   </ng-container>
 
+  <!--Diameter Column-->
   <ng-container matColumnDef="diameter">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Diameter </th>
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.diameter}} </td>
   </ng-container>
 
+  <!--Orbital period Column-->
   <ng-container matColumnDef="orbital">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Orbital Period </th>
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.orbital_period}} </td>
   </ng-container>
 
+  <!--Population Column-->
   <ng-container matColumnDef="population">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Population </th>
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.population}} </td>
   </ng-container>
 
+  <!--  Surface water Column-->
   <ng-container matColumnDef="surfaceWater">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Surface water </th>
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.surface_water}} </td>
   </ng-container>
 
+  <!--Terrain Column-->
   <ng-container matColumnDef="terrain">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Terrain </th>
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.terrain}} </td>
   </ng-container>
 
+  <!--Created Column-->
   <ng-container matColumnDef="created">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Created </th>
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.created | date}} </td>
   </ng-container>
 
+  <!--Edited Column-->
   <ng-container matColumnDef="edited">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
     <td mat-cell style="text-align: center" *matCellDef="let planet"> {{planet.edited | date}} </td>
   </ng-container>
+
+  <!--Table's click control-->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr
     mat-row
@@ -74,25 +85,24 @@
     *matRowDef="let row; columns: displayedColumns;"
   ></tr>
 
-  <!-- Row shown when there is no matching data. -->
-<!--  <tr class="mat-row" *matNoDataRow>-->
-<!--    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>-->
-<!--  </tr>-->
+<!--   Row shown when there is no matching data.-->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
+  </tr>
 </table>
 
+<!--Spinner-->
 <div style="display: flex; justify-content: center" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
-<div class="card-header" style="margin-left: 5%; margin-bottom: 5%;">
+<!--Failed information that pops when a row is clicked-->
+<div class="card-header" style="margin-left: 5%;">
   <div *ngIf="clickedRows.size">
     <h3 id="pap">
       Requests I failed
     </h3>
   </div>
-  <!--  <div *ngIf="!clickedRows.size">-->
-  <!--    <p>Failed requests will be logged here</p>-->
-  <!--  </div>-->
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">

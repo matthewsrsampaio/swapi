@@ -1,11 +1,13 @@
 <h1 id="head">SPECIES</h1>
 
-<!--<mat-form-field appearance="legacy" class="filter">-->
-<!--  <mat-label style="color: white">Filter</mat-label>-->
-<!--  <input (keyup)="applyFilter($event)"  matInput style="color: white" #input>-->
-<!--</mat-form-field>-->
+<!--Filter-->
+<mat-form-field appearance="legacy" class="filter">
+  <mat-label>Filter</mat-label>
+  <input (keyup)="applyFilter($event)" matInput style="color: mediumspringgreen" #input>
+</mat-form-field>
 
-<table mat-table [dataSource]="this.species" class="mat-elevation-z8 demo-table bg-opacity-50">
+<!--Table start with the information about the data I'm pulling-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table bg-opacity-50">
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
@@ -31,40 +33,49 @@
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.hair_colors}} </td>
   </ng-container>
 
+  <!--Average height Column-->
   <ng-container matColumnDef="averageHeight">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Average height </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.average_height}} </td>
   </ng-container>
 
+  <!--Average lifespan Column-->
   <ng-container matColumnDef="averageLifespan">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Average lifespan </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.average_lifespan}} </td>
   </ng-container>
 
+  <!--Classification Column-->
   <ng-container matColumnDef="classification">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Classification </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.classification}} </td>
   </ng-container>
 
+  <!--Language Column-->
   <ng-container matColumnDef="language">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Language </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.language}} </td>
   </ng-container>
 
+  <!--Designation Column-->
   <ng-container matColumnDef="designation">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Designation </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.designation}} </td>
   </ng-container>
 
+  <!--Created Column-->
   <ng-container matColumnDef="created">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Created </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.created | date}} </td>
   </ng-container>
 
+  <!--Edited Column-->
   <ng-container matColumnDef="edited">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.edited | date}} </td>
   </ng-container>
+
+  <!--Table's click control-->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row
       (click)="clickedRows.add(row)"
@@ -74,24 +85,23 @@
   ></tr>
 
   <!-- Row shown when there is no matching data. -->
-  <!--  <tr class="mat-row" *matNoDataRow>-->
-  <!--    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>-->
-  <!--  </tr>-->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
+    </tr>
 </table>
 
+<!--Spinner-->
 <div style="display: flex; justify-content: center" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
+<!--Failed information that pops when a row is clicked-->
 <div class="card-header" style="margin-left: 5%; margin-bottom: 5%">
   <div *ngIf="clickedRows.size">
     <h3 id="pap">
       Requests I failed
     </h3>
   </div>
-  <!--  <div *ngIf="!clickedRows.size">-->
-  <!--    <p>Failed requests will be logged here</p>-->
-  <!--  </div>-->
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">

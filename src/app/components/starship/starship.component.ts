@@ -3,7 +3,6 @@ import { Starship } from "../../models/startship";
 import {ServiceServices} from "../../service.services";
 import {MatTableDataSource} from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-starship',
@@ -18,7 +17,7 @@ export class StarshipComponent implements OnInit {
   clickedRows = new Set<Starship>();
   isLoading = true;
 
-  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
   ngOnInit() {
     this.onGetAllStarships();
@@ -28,7 +27,7 @@ export class StarshipComponent implements OnInit {
     this.serviceServices.getAllStarships()
       .subscribe((data) => {
         this.isLoading = false;
-        this.starships = data.results;
+        this.dataSource = new MatTableDataSource(data.results);
         console.log(this.starships);
       });
   }

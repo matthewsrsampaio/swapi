@@ -1,9 +1,14 @@
+img:hover {
+  -webkit-filter: drop-shadow(2px 0mm 0mm red);
+}
+
 button {
-  background-color: yellow;
-  margin-left: 5px;
+  margin-left: 3px;
 }
 
 button:hover {
+  outline-style: solid;
+  outline-color: red;
   background-color: mediumspringgreen;
   transition: 0.2s;
 }

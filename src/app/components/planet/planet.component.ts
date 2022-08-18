@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Planet} from "../../models/planet";
 import {ServiceServices} from "../../service.services";
-import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {MatTableDataSource} from '@angular/material/table';
 
@@ -18,7 +17,7 @@ export class PlanetComponent implements OnInit {
   clickedRows = new Set<Planet>();
   isLoading = true;
 
-  constructor(private serviceServices : ServiceServices, public http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
   ngOnInit() {
     this.onGetAllPlanets();
@@ -28,7 +27,7 @@ export class PlanetComponent implements OnInit {
     this.serviceServices.getAllPlanets()
       .subscribe((data) => {
         this.isLoading = false;
-        this.planets = data.results;
+        this.dataSource = new MatTableDataSource(data.results);
         console.log(this.planets);
       });
   }
@@ -36,7 +35,6 @@ export class PlanetComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log(this.clickedRows);
   }
 
 }

@@ -27,14 +27,14 @@ export class PeopleComponent implements OnInit {
     this.serviceServices.getAllPeople()
       .subscribe((data) => {
         this.isLoading = false;
-        this.people = data.results;
+        this.dataSource = new MatTableDataSource(data.results);
         console.log(this.people);
       });
   }
-  //
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 }

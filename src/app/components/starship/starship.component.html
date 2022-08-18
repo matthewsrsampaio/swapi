@@ -1,6 +1,13 @@
 <h1 id="head">STARSHIPS</h1>
 
-<table mat-table [dataSource]="this.starships" class="mat-elevation-z8 demo-table bg-opacity-50">
+<!--Filter-->
+<mat-form-field appearance="legacy" class="filter">
+  <mat-label>Filter</mat-label>
+  <input (keyup)="applyFilter($event)" matInput style="color: mediumspringgreen" #input>
+</mat-form-field>
+
+<!--Table start with the information about the data I'm pulling-->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table bg-opacity-50">
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
@@ -26,31 +33,37 @@
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.cargo_capacity}} </td>
   </ng-container>
 
+  <!--Consumables Column-->
   <ng-container matColumnDef="consumable">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Consumable </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.consumables}} </td>
   </ng-container>
 
+  <!--Cost in credits Column-->
   <ng-container matColumnDef="cost">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef style="text-align: center"> Cost in credits </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.cost_in_credits}} </td>
   </ng-container>
 
+  <!--Crew Column-->
   <ng-container matColumnDef="crew">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Crew </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.crew}} </td>
   </ng-container>
 
+  <!--Hyperdrive rating Column-->
   <ng-container matColumnDef="hyperdrive">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Hyperdrive rating</th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.hyperdrive_rating}} </td>
   </ng-container>
 
+  <!--Length Column-->
   <ng-container matColumnDef="length">
     <th mat-header-cell *matHeaderCellDef style="text-align: center"> Length </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.length}} </td>
   </ng-container>
 
+  <!--Manufacturer Column-->
   <ng-container matColumnDef="manufacturer">
     <th mat-header-cell *matHeaderCellDef style="text-align: center"> Manufacturer </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.manufacturer}} </td>
@@ -60,21 +73,26 @@
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Max atmosphere speed </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.max_atmosphering_speed}} </td>
   </ng-container>
-0
+
+  <!--Passengers Column-->
   <ng-container matColumnDef="passengers">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Passengers </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.passengers}} </td>
   </ng-container>
 
+  <!--Created Column-->
   <ng-container matColumnDef="created">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Created </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.created | date}} </td>
   </ng-container>
 
+  <!--Edited Column-->
   <ng-container matColumnDef="edited">
     <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
     <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.edited | date}} </td>
   </ng-container>
+
+  <!--Table's click control-->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row
       (click)="clickedRows.add(row)"
@@ -84,24 +102,24 @@
   ></tr>
 
   <!-- Row shown when there is no matching data. -->
-  <!--  <tr class="mat-row" *matNoDataRow>-->
-  <!--    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>-->
-  <!--  </tr>-->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
+    </tr>
+
 </table>
 
+<!--Spinner-->
 <div style="display: flex; justify-content: center" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
+<!--Failed information that pops when a row is clicked-->
 <div class="card-header" style="color: yellow; margin-left: 5%; margin-bottom: 5%">
   <div *ngIf="clickedRows.size">
     <h3>
       Requests I failed
     </h3>
   </div>
-  <!--  <div *ngIf="!clickedRows.size">-->
-  <!--    <p>Failed requests will be logged here</p>-->
-  <!--  </div>-->
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
