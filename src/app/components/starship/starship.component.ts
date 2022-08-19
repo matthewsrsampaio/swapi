@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Starship } from "../../models/startship";
+import {Component, OnInit} from '@angular/core';
+import {Starship} from "../../models/startship";
 import {ServiceServices} from "../../service.services";
 import {MatTableDataSource} from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";

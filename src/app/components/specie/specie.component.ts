@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Specie } from "../../models/specie";
+import {Component, OnInit} from '@angular/core';
+import {Specie} from "../../models/specie";
 import {ServiceServices} from "../../service.services";
 import {MatTableDataSource} from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";

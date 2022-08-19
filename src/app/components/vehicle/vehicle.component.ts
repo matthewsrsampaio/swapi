@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Vehicle } from "../../models/vehicle";
+import {Component, OnInit} from '@angular/core';
+import {Vehicle} from "../../models/vehicle";
 import {ServiceServices} from "../../service.services";
 import {MatTableDataSource} from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-vehicle',

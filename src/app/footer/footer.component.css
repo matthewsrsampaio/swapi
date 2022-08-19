@@ -1,10 +1,6 @@
 mat-toolbar {
-  /*position: fixed;*/
   position: -webkit-sticky;
   bottom: 0;
-  /*margin-top: 15%;*/
-  /*margin-bottom: auto;*/
-/*  min-width: 100%;*/
 }
 
 #footMessage {
