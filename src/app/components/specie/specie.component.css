@@ -1,3 +1,10 @@
+h1 {
+  color: goldenrod;
+  font-size: xx-large;
+  font-weight: bolder;
+  -webkit-filter: drop-shadow(2px 0mm 0mm red);
+}
+
 .demo-table {
   width: 90%;
   margin-left: auto;
