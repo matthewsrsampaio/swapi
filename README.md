@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `npm install`. If it doesn't work try `npm install --force`
 
-#Install ANGULAR MATERIAL
+#Install Angular Material
 
 Run `ng add @angular/material`
 
