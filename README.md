@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
+#Have NODE ready
+
+Run `npm install`. If it doesn't work try `npm install --force`
+
+#Install Angular Material
+
+Run `ng add @angular/material`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
