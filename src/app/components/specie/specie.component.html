@@ -1,9 +1,9 @@
-<h1 id="head">SPECIES</h1>
+<h2>SPECIES</h2>
 
 <!--Filter-->
 <mat-form-field appearance="legacy" class="filter">
   <mat-label>Filter</mat-label>
-  <input (keyup)="applyFilter($event)" matInput style="color: mediumspringgreen" #input>
+  <input (keyup)="applyFilter($event)" matInput #input>
 </mat-form-field>
 
 <!--Table start with the information about the data I'm pulling-->
@@ -11,68 +11,68 @@
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Name </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element">{{element.name}}</td>
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
   </ng-container>
 
   <!-- Climate Column -->
   <ng-container matColumnDef="skinColor">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Skin color </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.skin_colors}} </td>
+    <th mat-header-cell *matHeaderCellDef> Skin color </th>
+    <td mat-cell *matCellDef="let element"> {{element.skin_colors}} </td>
   </ng-container>
 
   <!-- Gravity Column -->
   <ng-container matColumnDef="eyeColor">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Eye color </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.eye_colors}} </td>
+    <th mat-header-cell *matHeaderCellDef> Eye color </th>
+    <td mat-cell *matCellDef="let element"> {{element.eye_colors}} </td>
   </ng-container>
 
   <!-- Rotation Column -->
   <ng-container matColumnDef="hairColor">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Hair color </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.hair_colors}} </td>
+    <th mat-header-cell *matHeaderCellDef> Hair color </th>
+    <td mat-cell *matCellDef="let element"> {{element.hair_colors}} </td>
   </ng-container>
 
   <!--Average height Column-->
   <ng-container matColumnDef="averageHeight">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Average height </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.average_height}} </td>
+    <th mat-header-cell *matHeaderCellDef> Average height </th>
+    <td mat-cell *matCellDef="let element"> {{element.average_height}} </td>
   </ng-container>
 
   <!--Average lifespan Column-->
   <ng-container matColumnDef="averageLifespan">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Average lifespan </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.average_lifespan}} </td>
+    <th mat-header-cell *matHeaderCellDef> Average lifespan </th>
+    <td mat-cell *matCellDef="let element"> {{element.average_lifespan}} </td>
   </ng-container>
 
   <!--Classification Column-->
   <ng-container matColumnDef="classification">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Classification </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.classification}} </td>
+    <th mat-header-cell *matHeaderCellDef> Classification </th>
+    <td mat-cell *matCellDef="let element"> {{element.classification}} </td>
   </ng-container>
 
   <!--Language Column-->
   <ng-container matColumnDef="language">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Language </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.language}} </td>
+    <th mat-header-cell *matHeaderCellDef> Language </th>
+    <td mat-cell *matCellDef="let element"> {{element.language}} </td>
   </ng-container>
 
   <!--Designation Column-->
   <ng-container matColumnDef="designation">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Designation </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.designation}} </td>
+    <th mat-header-cell *matHeaderCellDef> Designation </th>
+    <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
   </ng-container>
 
   <!--Created Column-->
   <ng-container matColumnDef="created">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Created </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.created | date}} </td>
+    <th mat-header-cell *matHeaderCellDef> Created </th>
+    <td mat-cell *matCellDef="let element"> {{element.created | date}} </td>
   </ng-container>
 
   <!--Edited Column-->
   <ng-container matColumnDef="edited">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.edited | date}} </td>
+    <th mat-header-cell *matHeaderCellDef> Edited </th>
+    <td mat-cell *matCellDef="let element"> {{element.edited | date}} </td>
   </ng-container>
 
   <!--Table's click control-->
@@ -91,23 +91,23 @@
 </table>
 
 <!--Spinner-->
-<div style="display: flex; justify-content: center" *ngIf="isLoading">
+<div id="spinner" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
 <!--Failed information that pops when a row is clicked-->
-<div class="card-header" style="margin-left: 5%; margin-bottom: 5%">
+<div class="card-header">
   <div *ngIf="clickedRows.size">
-    <h3 id="pap">
+    <p id="failed">
       Requests I failed
-    </h3>
+    </p>
   </div>
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
-        <h2>Name: {{clickedRow.name}}</h2>
-        <p id="pap">Films: </p><p>{{clickedRow.films}}</p>
-        <p id="pap">People: </p><p>{{clickedRow.people}}</p>
+        <p id="Title">Name: {{clickedRow.name}}</p>
+        <p>Films: {{clickedRow.films}}</p>
+        <p>People: {{clickedRow.people}}</p>
       </li>
     </ul>
   </div>

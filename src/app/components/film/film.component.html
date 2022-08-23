@@ -1,9 +1,9 @@
-<h1 id="head">FILMS</h1>
+<h2>FILMS</h2>
 
 <!--Filter-->
 <mat-form-field appearance="legacy" class="filter">
   <mat-label>Filter</mat-label>
-  <input (keyup)="applyFilter($event)" matInput style="color: mediumspringgreen" #input>
+  <input (keyup)="applyFilter($event)" matInput #input>
 </mat-form-field>
 
 <!--Table start with the information about the data I'm pulling-->
@@ -11,50 +11,50 @@
 
   <!-- Name Column -->
   <ng-container matColumnDef="title">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Title </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film">{{film.title}}</td>
+    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <td mat-cell *matCellDef="let film" style="width: 10%">{{film.title}}</td>
   </ng-container>
 
   <!-- Climate Column -->
   <ng-container matColumnDef="director">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Director </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.director}} </td>
+    <th mat-header-cell  *matHeaderCellDef> Director </th>
+    <td mat-cell *matCellDef="let film" style="width: 8%"> {{film.director}} </td>
   </ng-container>
 
   <!-- Gravity Column -->
   <ng-container matColumnDef="producer">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Producer </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.producer}} </td>
+    <th mat-header-cell *matHeaderCellDef> Producer </th>
+    <td mat-cell *matCellDef="let film" style="width: 8%; padding-right: 3%"> {{film.producer}} </td>
   </ng-container>
 
   <!-- Rotation Column -->
   <ng-container matColumnDef="episode">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Episode </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.episode_id}} </td>
+    <th mat-header-cell *matHeaderCellDef> Episode </th>
+    <td mat-cell *matCellDef="let film" style="width: 3%;"> {{film.episode_id}} </td>
   </ng-container>
 
   <!--Opening crawl Column-->
   <ng-container matColumnDef="opening">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Opening</th>
-    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.opening_crawl}} </td>
+    <th mat-header-cell *matHeaderCellDef> Opening</th>
+    <td mat-cell *matCellDef="let film" style="width: 30%; padding-right: 3%"> {{film.opening_crawl}} </td>
   </ng-container>
 
   <!--Release date Column-->
   <ng-container matColumnDef="release">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Release date </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.release_date | date}} </td>
+    <th mat-header-cell *matHeaderCellDef> Release date </th>
+    <td mat-cell *matCellDef="let film" style="width: 5%"> {{film.release_date | date}} </td>
   </ng-container>
 
   <!--Created Column-->
   <ng-container matColumnDef="created">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Created </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.created | date}} </td>
+    <th mat-header-cell *matHeaderCellDef> Created </th>
+    <td mat-cell *matCellDef="let film" style="width: 5%"> {{film.created | date}} </td>
   </ng-container>
 
   <!--Edited Column-->
   <ng-container matColumnDef="edited">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
-    <td mat-cell style="text-align: center" *matCellDef="let film"> {{film.edited | date}} </td>
+    <th mat-header-cell *matHeaderCellDef> Edited </th>
+    <td mat-cell *matCellDef="let film" style="width: 5%"> {{film.edited | date}} </td>
   </ng-container>
 
   <!--Table's click control-->
@@ -74,25 +74,25 @@
 </table>
 
 <!--Spinner-->
-<div style="display: flex; justify-content: center" *ngIf="isLoading">
+<div id="spinner" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
 <!--Failed information that pops when a row is clicked-->
-<div class="card-header" style="margin-left: 5%">
+<div class="card-header">
   <div *ngIf="clickedRows.size">
-    <h3 id="pap">
+    <p id="failed">
       Requests I failed
-    </h3>
+    </p>
   </div>
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
-        <h2>Titulo: {{clickedRow.title}}</h2>
-        <p id="pap">Planetas: </p><p>{{clickedRow.planets}}</p>
-        <p id="pap">Species: </p><p>{{clickedRow.starships}}</p>
-        <p id="pap">Starships: </p><p>{{clickedRow.starships}}</p>
-        <p id="pap">Vehicles: </p><p>{{clickedRow.vehicles}}</p>
+        <p id="Title">Titulo: {{clickedRow.title}}</p>
+        <p>Planets: {{clickedRow.planets}}</p>
+        <p>Species: {{clickedRow.starships}}</p>
+        <p>Starships: {{clickedRow.starships}}</p>
+        <p>Vehicles: {{clickedRow.vehicles}}</p>
       </li>
     </ul>
   </div>

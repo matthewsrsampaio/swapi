@@ -1,9 +1,9 @@
-<h1 id="head">VEHICLES</h1>
+<h2>VEHICLES</h2>
 
 <!--Filter-->
 <mat-form-field appearance="legacy" class="filter">
   <mat-label>Filter</mat-label>
-  <input (keyup)="applyFilter($event)" matInput style="color: mediumspringgreen" #input>
+  <input (keyup)="applyFilter($event)" matInput #input>
 </mat-form-field>
 
 <!--Table start with the information about the data I'm pulling-->
@@ -11,38 +11,38 @@
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Name </th>
-    <td mat-cell *matCellDef="let element" style="text-align: center">{{element.name}}</td>
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
   </ng-container>
 
   <!-- Climate Column -->
-  <ng-container style="text-align: center" matColumnDef="model">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Model </th>
-    <td mat-cell *matCellDef="let element" style="text-align: center"> {{element.model}} </td>
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef> Model </th>
+    <td mat-cell *matCellDef="let element"> {{element.model}} </td>
   </ng-container>
 
   <!-- Gravity Column -->
   <ng-container matColumnDef="passengers">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Passengers </th>
-    <td mat-cell *matCellDef="let element" style="text-align: center"> {{element.passengers}} </td>
+    <th mat-header-cell *matHeaderCellDef> Passengers </th>
+    <td mat-cell *matCellDef="let element"> {{element.passengers}} </td>
   </ng-container>
 
   <!-- Rotation Column -->
   <ng-container matColumnDef="crew">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Crew </th>
-    <td mat-cell *matCellDef="let element" style="text-align: center"> {{element.crew}} </td>
+    <th mat-header-cell *matHeaderCellDef> Crew </th>
+    <td mat-cell *matCellDef="let element"> {{element.crew}} </td>
   </ng-container>
 
   <!--Vehicle_class Column-->
   <ng-container matColumnDef="class">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Class </th>
-    <td mat-cell *matCellDef="let element" style="text-align: center"> {{element.vehicle_class}} </td>
+    <th mat-header-cell *matHeaderCellDef> Class </th>
+    <td mat-cell *matCellDef="let element"> {{element.vehicle_class}} </td>
   </ng-container>
 
   <!--Cargo capacity Column-->
   <ng-container matColumnDef="cargoCapac">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Cargo capacity </th>
-    <td mat-cell *matCellDef="let element" style="text-align: center"> {{element.cargo_capacity}} </td>
+    <th mat-header-cell *matHeaderCellDef> Cargo capacity </th>
+    <td mat-cell *matCellDef="let element"> {{element.cargo_capacity}} </td>
   </ng-container>
 
   <!--Consumables Column-->
@@ -53,32 +53,32 @@
 
   <!--Cost in credits Column-->
   <ng-container matColumnDef="cost">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Cost in credits</th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.cost_in_credits}} </td>
+    <th mat-header-cell *matHeaderCellDef> Cost in credits</th>
+    <td mat-cell *matCellDef="let element"> {{element.cost_in_credits}} </td>
   </ng-container>
 
   <!--Length Column-->
   <ng-container matColumnDef="length">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Length </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.length}} </td>
+    <th mat-header-cell *matHeaderCellDef> Length </th>
+    <td mat-cell *matCellDef="let element"> {{element.length}} </td>
   </ng-container>
 
   <!--Manufacturer Column-->
   <ng-container matColumnDef="manufacturer">
-    <th mat-header-cell *matHeaderCellDef style="text-align: center"> Manufacturer </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.manufacturer}} </td>
+    <th mat-header-cell *matHeaderCellDef> Manufacturer </th>
+    <td mat-cell *matCellDef="let element"> {{element.manufacturer}} </td>
   </ng-container>
 
   <!--Created Column-->
   <ng-container matColumnDef="created">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Created </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.created | date}} </td>
+    <th mat-header-cell *matHeaderCellDef> Created </th>
+    <td mat-cell *matCellDef="let element"> {{element.created | date}} </td>
   </ng-container>
 
  <!--Edited Column-->
   <ng-container matColumnDef="edited">
-    <th mat-header-cell style="text-align: center" *matHeaderCellDef> Edited </th>
-    <td mat-cell style="text-align: center" *matCellDef="let element"> {{element.edited | date}} </td>
+    <th mat-header-cell *matHeaderCellDef> Edited </th>
+    <td mat-cell *matCellDef="let element"> {{element.edited | date}} </td>
   </ng-container>
 
  <!--Table's click control-->
@@ -97,23 +97,23 @@
 </table>
 
 <!--Spinner-->
-<div style="display: flex; justify-content: center" *ngIf="isLoading">
+<div id="spinner" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
 <!--Failed information that pops when a row is clicked-->
-<div class="card-header" style="margin-left: 5%; margin-bottom: 5%">
+<div class="card-header">
   <div *ngIf="clickedRows.size">
-    <h3 id="pap">
+    <p id="failed">
       Requests I failed
-    </h3>
+    </p>
   </div>
   <div class="card-body">
     <ul>
       <li *ngFor="let clickedRow of clickedRows">
-        <h2>Name: {{clickedRow.name}}</h2>
-        <p id="pap">Films: </p><p>{{clickedRow.films}}</p>
-        <p id="pap">Pilots: {{clickedRow.pilots}}</p>
+        <p id="Title">Name: {{clickedRow.name}}</p>
+        <p>Films: {{clickedRow.films}}</p>
+        <p>Pilots: {{clickedRow.pilots}}</p>
       </li>
     </ul>
   </div>

@@ -1,33 +1,28 @@
-img:hover {
+#mainImg {
+  width: 8%;
+}
+
+#mainImg:hover {
   -webkit-filter: drop-shadow(2px 0mm 0mm red);
   transform: scale(1.1);
   transition: transform 1s;
 }
 
-button {
-  margin-left: 3px;
-}
-
-button:hover {
-  outline-style: solid;
-  outline-color: red;
-  background-color: mediumspringgreen;
-  transition: 0.2s;
-}
-
-a {
-  text-decoration: none;
-}
-
 .active {
-  background-color: goldenrod;
+  color: #673ab7;
+  background-color: #f6f6f6;
 }
 
-#btn {
-  text-align: center;
+mat-toolbar div {
   margin-left: 28%;
 }
 
-mat-toolbar {
-  min-width: 100%;
+mat-toolbar div button {
+  text-align: center;
+  margin-left: 2%;
+}
+
+mat-toolbar div button:hover {
+  color: #673ab7;
+  background-color: #f6f6f6;
 }

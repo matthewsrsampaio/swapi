@@ -1,15 +1,1 @@
-mat-toolbar {
-  position: -webkit-sticky;
-  bottom: 0;
-}
 
-#footMessage {
-  text-align: center;
-  font-size: medium;
-  margin-left: 36%;
-}
-
-p {
-  color: yellow;
-  outline-style: ridge;
-}
