@@ -1,101 +1,128 @@
 <h2>FILMS</h2>
 
-<!--Filter-->
-<mat-form-field appearance="legacy" class="filter">
-  <mat-label>Filter</mat-label>
-  <input (keyup)="applyFilter($event)" matInput #input>
-</mat-form-field>
-
-<!--Table start with the information about the data I'm pulling-->
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table bg-opacity-50">
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef> Title </th>
-    <td mat-cell *matCellDef="let film" style="width: 10%">{{film.title}}</td>
-  </ng-container>
-
-  <!-- Climate Column -->
-  <ng-container matColumnDef="director">
-    <th mat-header-cell  *matHeaderCellDef> Director </th>
-    <td mat-cell *matCellDef="let film" style="width: 8%"> {{film.director}} </td>
-  </ng-container>
-
-  <!-- Gravity Column -->
-  <ng-container matColumnDef="producer">
-    <th mat-header-cell *matHeaderCellDef> Producer </th>
-    <td mat-cell *matCellDef="let film" style="width: 8%; padding-right: 3%"> {{film.producer}} </td>
-  </ng-container>
-
-  <!-- Rotation Column -->
-  <ng-container matColumnDef="episode">
-    <th mat-header-cell *matHeaderCellDef> Episode </th>
-    <td mat-cell *matCellDef="let film" style="width: 3%;"> {{film.episode_id}} </td>
-  </ng-container>
-
-  <!--Opening crawl Column-->
-  <ng-container matColumnDef="opening">
-    <th mat-header-cell *matHeaderCellDef> Opening</th>
-    <td mat-cell *matCellDef="let film" style="width: 30%; padding-right: 3%"> {{film.opening_crawl}} </td>
-  </ng-container>
-
-  <!--Release date Column-->
-  <ng-container matColumnDef="release">
-    <th mat-header-cell *matHeaderCellDef> Release date </th>
-    <td mat-cell *matCellDef="let film" style="width: 5%"> {{film.release_date | date}} </td>
-  </ng-container>
-
-  <!--Created Column-->
-  <ng-container matColumnDef="created">
-    <th mat-header-cell *matHeaderCellDef> Created </th>
-    <td mat-cell *matCellDef="let film" style="width: 5%"> {{film.created | date}} </td>
-  </ng-container>
-
-  <!--Edited Column-->
-  <ng-container matColumnDef="edited">
-    <th mat-header-cell *matHeaderCellDef> Edited </th>
-    <td mat-cell *matCellDef="let film" style="width: 5%"> {{film.edited | date}} </td>
-  </ng-container>
-
-  <!--Table's click control-->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr
-    mat-row
-    (click)="clickedRows.add(row)"
-    (dblclick)="clickedRows.delete(row)"
-    [class.demo-row-is-clicked]="clickedRows.has(row)"
-    *matRowDef="let row; columns: displayedColumns"
-  ></tr>
-
-<!--   Row shown when there is no matching data.-->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
-    </tr>
-</table>
-
 <!--Spinner-->
 <div id="spinner" *ngIf="isLoading">
   <mat-spinner></mat-spinner>
 </div>
 
-<!--Failed information that pops when a row is clicked-->
-<div class="card-header">
-  <div *ngIf="clickedRows.size">
-    <p id="failed">
-      Requests I failed
-    </p>
-  </div>
-  <div class="card-body">
-    <ul>
-      <li *ngFor="let clickedRow of clickedRows">
-        <p id="Title">Titulo: {{clickedRow.title}}</p>
-        <p>Planets: {{clickedRow.planets}}</p>
-        <p>Species: {{clickedRow.starships}}</p>
-        <p>Starships: {{clickedRow.starships}}</p>
-        <p>Vehicles: {{clickedRow.vehicles}}</p>
-      </li>
-    </ul>
-  </div>
-</div>
+<body *ngIf="!isLoading">
+  <!--Filter-->
+  <mat-form-field appearance="legacy" class="filter">
+    <mat-label>Filter</mat-label>
+    <input (keyup)="applyFilter($event)" matInput #input>
+  </mat-form-field>
 
+  <!--Table start with the information about the data I'm pulling-->
+  <table mat-table [dataSource]="dataSourceFilms" *ngIf="!isLoading" class="mat-elevation-z8 demo-table bg-opacity-50">
 
+    <!-- Name Column -->
+<!--    <ng-container matColumnDef="title">-->
+<!--      <th mat-header-cell *matHeaderCellDef> Title </th>-->
+<!--      <td mat-cell *matCellDef="let film" (click)="onClick(film)">{{film.title}}</td>-->
+<!--    </ng-container>-->
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let planet">{{planet.name}}</td>
+    </ng-container>
+
+    <!-- Climate Column -->
+    <ng-container matColumnDef="director">
+      <th mat-header-cell  *matHeaderCellDef> Director </th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.director}} </td>
+    </ng-container>
+
+    <!-- Gravity Column -->
+    <ng-container matColumnDef="producer">
+      <th mat-header-cell *matHeaderCellDef> Producer </th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.producer}} </td>
+    </ng-container>
+
+    <!-- Rotation Column -->
+    <ng-container matColumnDef="episode">
+      <th mat-header-cell *matHeaderCellDef> Episode </th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.episode_id}} </td>
+    </ng-container>
+
+    <!--Opening crawl Column-->
+    <ng-container matColumnDef="opening">
+      <th mat-header-cell *matHeaderCellDef> Opening</th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.opening_crawl}} </td>
+    </ng-container>
+
+    <!--Release date Column-->
+    <ng-container matColumnDef="release">
+      <th mat-header-cell *matHeaderCellDef> Release date </th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.release_date | date}} </td>
+    </ng-container>
+
+    <!--Created Column-->
+    <ng-container matColumnDef="created">
+      <th mat-header-cell *matHeaderCellDef> Created </th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.created | date}} </td>
+    </ng-container>
+
+    <!--Edited Column-->
+    <ng-container matColumnDef="edited">
+      <th mat-header-cell *matHeaderCellDef> Edited </th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.edited | date}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsFilms"></tr>
+
+    <!--Table's click control-->
+    <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      (dblclick)="clickedRows.delete(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumnsFilms"
+    ></tr>
+
+  <!--   Row shown when there is no matching data.-->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
+      </tr>
+  </table>
+
+  <!--Spinner-->
+  <!--<div id="spinner" *ngIf="isLoading">-->
+  <!--  <mat-spinner></mat-spinner>-->
+  <!--</div>-->
+
+  <!--Failed information that pops when a row is clicked-->
+  <div class="card-header">
+    <div *ngIf="clickedRows.size">
+      <p id="failed">
+        Requests I failed
+      </p>
+    </div>
+  <!--  <div>-->
+  <!--    <ul>-->
+  <!--      <li *ngFor="let clickedRow of clickedRows">-->
+  <!--        <p id="Title">Titulo: {{clickedRow.title}}</p>-->
+  <!--        <p>Planets: {{clickedRow.planets}}</p>-->
+  <!--        <p>Species: {{clickedRow.species}}</p>-->
+  <!--        <p>Starships: {{clickedRow.starships}}</p>-->
+  <!--        <p>Vehicles: {{clickedRow.vehicles}}</p>-->
+  <!--      </li>-->
+  <!--    </ul>-->
+  <!--  </div>-->
+
+  </div>
+  <div *ngFor="let planet of planets">
+    <p>{{planet.name}}</p>
+  </div>
+  <p>*********************************</p>
+  <ul *ngFor="let specie of species">
+    <li>{{specie.name}}</li>
+  </ul>
+  <p>*********************************</p>
+  <ul *ngFor="let starship of starships">
+    <li>{{starship.name}}</li>
+  </ul>
+  <p>*********************************</p>
+  <ul *ngFor="let vehicle of vehicles">
+    <li>{{vehicle.name}}</li>
+  </ul>
+</body>

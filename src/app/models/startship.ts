@@ -1,6 +1,3 @@
-import { Film } from "./film";
-import { People } from "./people";
-
 export interface Starship {
   name: string,
   model: string,
@@ -16,8 +13,8 @@ export interface Starship {
   manufacturer: string;
   max_atmosphering_speed: string;
   passengers: number,
-  films: Film[],
-  pilots: People[],
+  films: string[],
+  pilots: string[],
   starship_class: string,
   url: string;
 }

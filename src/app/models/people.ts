@@ -1,11 +1,7 @@
-import { Film } from "./film";
-import {Starship} from "./startship";
-import {Specie} from "./specie";
-
 export interface People {
   birth_year: string;
   eye_color: string;
-  films: Film[];
+  films: string[];
   gender: string;
   hair_color: string;
   height: string;
@@ -15,8 +11,8 @@ export interface People {
   skin_color: string;
   created: string;
   edited: string;
-  species: Specie[];
-  starships: Starship[];
+  species: string[];
+  starships: string[];
   url: string;
   vehicles: string[];
 }

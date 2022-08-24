@@ -1,6 +1,3 @@
-import {People} from "./people";
-import {Film} from "./film";
-
 export interface Vehicle {
   name: string;
   model: string;
@@ -14,8 +11,8 @@ export interface Vehicle {
   length: string;
   manufacturer: string;
   max_atmosphering_speed: string;
-  pilots: People[];
-  films: Film[];
+  pilots: string[];
+  films: string[];
   url: string;
   vehicle_class: string;
 }

@@ -25,24 +25,48 @@ export class ServiceServices {
     return this.http.get<Film>(this.endpointFilms);
   }
 
+  getFilm(id: number): Observable<any>  {
+    return this.http.get<Film>(`${this.endpointFilms}/${id}`);
+  }
+
   getAllPeople(): Observable<any> {
     return this.http.get<People>(this.endpointPeople);
+  }
+
+  getResident(id: number): Observable<any>  {
+    return this.http.get<People>(`${this.endpointPeople}/${id}`);
   }
 
   getAllPlanets(): Observable<any> {
     return this.http.get<Planet>(this.endpointPlanets);
   }
 
-  getAllSpecie(): Observable<any> {
+  getPlanet(id: number): Observable<any>  {
+    return this.http.get<Planet>(`${this.endpointPlanets}/${id}`);
+  }
+
+  getAllSpecies(): Observable<any> {
     return this.http.get<Specie>(this.endpointSpecies);
+  }
+
+  getSpecie(id: number): Observable<any>  {
+    return this.http.get<Specie>(`${this.endpointSpecies}/${id}`);
   }
 
   getAllStarships(): Observable<any>{
     return this.http.get<Starship>(this.endpointStarships);
   }
 
+  getStarship(id: number): Observable<any>  {
+    return this.http.get<Starship>(`${this.endpointStarships}/${id}`);
+  }
+
   getAllVehicle(): Observable<any>{
     return this.http.get<Vehicle>(this.endpointVehicles);
+  }
+
+  getVehicle(id: number): Observable<any>  {
+    return this.http.get<Vehicle>(`${this.endpointVehicles}/${id}`);
   }
 
 }

@@ -3,6 +3,7 @@ import {Planet} from "../../models/planet";
 import {ServiceServices} from "../../service.services";
 import {HttpClient} from "@angular/common/http";
 import {MatTableDataSource} from '@angular/material/table';
+import {Film} from "../../models/film";
 
 @Component({
   selector: 'app-planet',

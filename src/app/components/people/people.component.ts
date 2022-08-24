@@ -37,4 +37,8 @@ export class PeopleComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  onClick() {
+
+  }
+
 }

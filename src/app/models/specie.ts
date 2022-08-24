@@ -1,6 +1,3 @@
-import {People} from "./people";
-import {Film} from "./film";
-
 export interface Specie {
   name: string;
   skin_colors: string;
@@ -14,7 +11,7 @@ export interface Specie {
   edited: string;
   homeworld: string;
   language: string;
-  people: People[];
-  films: Film[];
+  people: string[];
+  films: string[];
   url: string;
 }
