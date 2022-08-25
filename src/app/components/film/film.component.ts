@@ -19,11 +19,10 @@ export class FilmComponent implements OnInit {
   starships: Starship[] = [];
   species: Specie[] = [];
   vehicles: Vehicle[] = [];
-  displayedColumnsFilms: string[] = ['title', 'director', 'producer', 'episode', 'opening', 'release', 'created', 'edited'];
-  dataSourceFilms = new MatTableDataSource(this.films);
+  displayedColumns: string[] = ['title', 'director', 'producer', 'episode', 'opening', 'release', 'created', 'edited'];
+  dataSource = new MatTableDataSource(this.films);
   clickedRows = new Set<Film>();
   isLoading = true;
-  destroy: boolean = true;
   selectedRow: any;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
@@ -32,6 +31,7 @@ export class FilmComponent implements OnInit {
     this.onGetAllFilms();
   }
 
+  //Select and delete data from table and show extra data into the cards below
   selectRow(row) {
     if(this.selectedRow) {
       this.clickedRows.delete(this.selectedRow);
@@ -40,6 +40,7 @@ export class FilmComponent implements OnInit {
     this.clickedRows.add(this.selectedRow);
   }
 
+  //Method to clean extra data
   clearData() {
     this.films = [];
     this.planets = [];
@@ -48,51 +49,52 @@ export class FilmComponent implements OnInit {
     this.vehicles = [];
   }
 
+
   onGetAllFilms() {
     this.serviceServices.getAllFilm()
       .subscribe((data) => {
         this.isLoading = false;
-        this.dataSourceFilms = new MatTableDataSource(data.results);
-        console.log(this.films);
+        this.dataSource = new MatTableDataSource(data.results);
       });
   }
 
+  //Method to filter table
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSourceFilms.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  onClick(film: Film) { //-> de quem eu vou receber os dados
+  //Split URL to collect all id
+  collectUrlId(get: string): string {
+    const splitPath = get.split('/')
+    const id: string = splitPath[splitPath.length - 2]
+    return id;
+  }
+
+  //Method responsible for bringing the extra data
+  onClick(film: Film) {
     this.clearData();
-    film.planets.forEach(plan => { //->loop dentro dos dados que eu estou trazendo
-      const splitPath = plan.split('/') // -> para cada endereço eu separo as barras
-      const id = splitPath[splitPath.length-2] // -> Pego o id
-      this.serviceServices.getPlanet(parseInt(id)) // -> pego os dados que eu quero
+    //All methods bellow are responsible to collect extra data
+    film.planets.forEach(plan => {
+      this.serviceServices.getPlanet(parseInt(this.collectUrlId(plan)))
         .subscribe((data) => {
           this.planets.push(data)
-        }
-      );
+        })
     })
     film.starships.forEach(star => {
-      const split = star.split('/')
-      const id = split[split.length-2]
-      this.serviceServices.getStarship(parseInt(id))
+      this.serviceServices.getStarship(parseInt(this.collectUrlId(star)))
         .subscribe( (data) => {
         this.starships.push(data)
       })
     })
     film.species.forEach(spec => {
-      const splitPath = spec.split('/')
-      const id = splitPath[splitPath.length-2]
-      this.serviceServices.getSpecie(parseInt(id))
+      this.serviceServices.getSpecie(parseInt(this.collectUrlId(spec)))
         .subscribe( (data) => {
           this.species.push(data)
         })
     })
     film.vehicles.forEach(vehi => {
-      const split = vehi.split('/')
-      const id = split[split.length-2]
-      this.serviceServices.getVehicle(parseInt(id))
+      this.serviceServices.getVehicle(parseInt(this.collectUrlId(vehi)))
         .subscribe( (data) => {
           this.vehicles.push(data)
         })

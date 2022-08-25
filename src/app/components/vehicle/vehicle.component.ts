@@ -3,6 +3,9 @@ import {Vehicle} from "../../models/vehicle";
 import {ServiceServices} from "../../service.services";
 import {MatTableDataSource} from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";
+import {Film} from "../../models/film";
+import {People} from "../../models/people";
+import {Starship} from "../../models/startship";
 
 @Component({
   selector: 'app-vehicle',
@@ -10,11 +13,14 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent implements OnInit {
-  vehicles!: Vehicle[];
+  vehicles: Vehicle[] = [];
+  films: Film[] = [];
+  pilots: People[] = [];
   displayedColumns: string[] = ['name', 'model', 'passengers', 'crew', 'class', 'cargoCapac', 'consumables', 'cost', 'length', 'manufacturer', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.vehicles);
   clickedRows = new Set<Vehicle>();
   isLoading = true;
+  selectedRow: any;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
@@ -22,6 +28,23 @@ export class VehicleComponent implements OnInit {
     this.onGetAllVehicles();
   }
 
+  //Select and delete data from table and show extra data into the cards below
+  selectRow(row) {
+    if(this.selectedRow) {
+      this.clickedRows.delete(this.selectedRow);
+    }
+    this.selectedRow = row;
+    this.clickedRows.add(this.selectedRow);
+  }
+
+  //Method to clean extra data
+  clearData() {
+    this.vehicles = [];
+    this.films = [];
+    this.pilots = [];
+  }
+
+  //This method collects all data from SWAPI
   onGetAllVehicles() {
     this.serviceServices.getAllVehicle()
       .subscribe((data) => {
@@ -31,9 +54,34 @@ export class VehicleComponent implements OnInit {
       });
   }
 
+  //Method to filter table
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  //Split URL to collect all id
+  collectUrlId(get: string): string {
+    const splitPath = get.split('/')
+    const id: string = splitPath[splitPath.length - 2]
+    return id;
+  }
+
+  //Method responsible for bringing the extra data
+  onClick(vehicle: Vehicle) {
+    this.clearData();
+    //All methods bellow are responsible to collect extra data
+    vehicle.films.forEach(film => {
+      this.serviceServices.getFilm(parseInt(this.collectUrlId(film)))
+        .subscribe((data) => {
+          this.films.push(data)
+        })
+    })
+    vehicle.pilots.forEach(pilot => {
+      this.serviceServices.getStarship(parseInt(this.collectUrlId(pilot)))
+        .subscribe( (data) => {
+          this.pilots.push(data)
+        })
+    })
+  }
 }

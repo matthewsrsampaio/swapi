@@ -19,7 +19,7 @@ body {
 
 h2 {
   font-size: 70px;
-  color: #3a3a3a;
+  /*color: #3a3a3a;*/
   margin-top: 0.5%;
   text-align: center;
 }
@@ -30,10 +30,23 @@ h2 {
   margin-right: auto;
 }
 
-.mat-row .mat-cell {
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
-  cursor: pointer;
+#matCardExt {
+  background-color: #f6f6f6;
+  bottom: 5%;
+  display: flex;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  width: 90%;
+}
+
+mat-card mat-card {
+  margin-left: 1%;
+}
+
+mat-card mat-card p {
+  color: #3a3a3a;
 }
 
 .mat-row:hover .mat-cell {
@@ -76,7 +89,7 @@ mat-card-header {
   justify-content: center;
 }
 
-p {
+.mat-headline {
   color: #3a3a3a;
   margin-top: 2%;
   font-size: xx-large;
@@ -84,19 +97,8 @@ p {
   text-align: center;
 }
 
-#Title {
+mat-toolbar mat-toolbar-row p{
   font-size: large;
-  font-weight: bold;
-  padding-top: 10px;
-}
-
-#footer {
-  position: -webkit-sticky;
-  bottom: 0;
-}
-
-#footMessage {
-  font-size: medium;
   font-min-size: medium;
   margin-left: 38%;
   color: yellow;
@@ -106,7 +108,79 @@ p {
   margin-bottom: 3%;
 }
 
-mat-card-header #extraInfo {
+.mat-card-header p {
+  font-size: xxx-large;
   color: #3a3a3a;
+  background-color: #f6f6f6;
 }
 
+#columnTitle {
+  width: 10%;
+}
+
+#columnDir {
+  width: 8%;
+}
+
+#columnProd {
+  width: 12%
+}
+
+#columnEpi {
+  width: 4%;
+}
+
+#columnCargo {
+  width: 8%;
+}
+
+#columnMglt {
+  width: 3%;
+  padding-left: 5px;
+}
+
+#columnMaxSpd {
+  padding-right: 5px;
+}
+
+#columnCost {
+  width: 8%;
+}
+
+#columnHyper {
+  width: 5%;
+  padding-left: 10px;
+}
+
+#columnModel {
+  width: 10%;
+}
+
+#columnManufac {
+  padding-left: 10px;
+}
+
+#columnNamepassengers {
+  padding-right: 10px
+}
+
+#columnNameCost {
+  padding-left: 5px;
+}
+
+#columnNameLength {
+  padding-right: 10px;
+}
+
+#columnNameVehiclePassengers {
+  padding-right: 10px;
+}
+
+#columnNameCrew {
+  padding-right: 10px;
+}
+
+#420 {
+  display: flex;
+  justify-self: center
+}

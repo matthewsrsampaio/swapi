@@ -33,7 +33,7 @@ export class ServiceServices {
     return this.http.get<People>(this.endpointPeople);
   }
 
-  getResident(id: number): Observable<any>  {
+  getPeople(id: number): Observable<any>  {
     return this.http.get<People>(`${this.endpointPeople}/${id}`);
   }
 
