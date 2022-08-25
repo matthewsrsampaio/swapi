@@ -26,7 +26,7 @@ export class ServiceServices {
   }
 
   getFilm(id: number): Observable<any>  {
-    return this.http.get<Film>(`${this.endpointFilms}/${id}`);
+    return this.http.get<Film>(`${this.endpointFilms}/${id}`); //Por exemplo: https://swapi.dev/api/films/:id/
   }
 
   getAllPeople(): Observable<any> {

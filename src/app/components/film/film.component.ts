@@ -23,11 +23,29 @@ export class FilmComponent implements OnInit {
   dataSourceFilms = new MatTableDataSource(this.films);
   clickedRows = new Set<Film>();
   isLoading = true;
+  destroy: boolean = true;
+  selectedRow: any;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
   ngOnInit() {
     this.onGetAllFilms();
+  }
+
+  selectRow(row) {
+    if(this.selectedRow) {
+      this.clickedRows.delete(this.selectedRow);
+    }
+    this.selectedRow = row;
+    this.clickedRows.add(this.selectedRow);
+  }
+
+  clearData() {
+    this.films = [];
+    this.planets = [];
+    this.starships = [];
+    this.species = [];
+    this.vehicles = [];
   }
 
   onGetAllFilms() {
@@ -44,11 +62,12 @@ export class FilmComponent implements OnInit {
     this.dataSourceFilms.filter = filterValue.trim().toLowerCase();
   }
 
-  onClick(film: Film) {
-    film.planets.forEach(p => {
-      const split = p.split('/')
-      const id = split[split.length-2]
-      this.serviceServices.getPlanet(parseInt(id))
+  onClick(film: Film) { //-> de quem eu vou receber os dados
+    this.clearData();
+    film.planets.forEach(plan => { //->loop dentro dos dados que eu estou trazendo
+      const splitPath = plan.split('/') // -> para cada endereço eu separo as barras
+      const id = splitPath[splitPath.length-2] // -> Pego o id
+      this.serviceServices.getPlanet(parseInt(id)) // -> pego os dados que eu quero
         .subscribe((data) => {
           this.planets.push(data)
         }
@@ -62,16 +81,16 @@ export class FilmComponent implements OnInit {
         this.starships.push(data)
       })
     })
-    film.species.forEach(star => {
-      const split = star.split('/')
-      const id = split[split.length-2]
+    film.species.forEach(spec => {
+      const splitPath = spec.split('/')
+      const id = splitPath[splitPath.length-2]
       this.serviceServices.getSpecie(parseInt(id))
         .subscribe( (data) => {
           this.species.push(data)
         })
     })
-    film.vehicles.forEach(star => {
-      const split = star.split('/')
+    film.vehicles.forEach(vehi => {
+      const split = vehi.split('/')
       const id = split[split.length-2]
       this.serviceServices.getVehicle(parseInt(id))
         .subscribe( (data) => {
@@ -79,5 +98,4 @@ export class FilmComponent implements OnInit {
         })
     })
   }
-
 }

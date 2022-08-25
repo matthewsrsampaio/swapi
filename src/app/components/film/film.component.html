@@ -16,31 +16,26 @@
   <table mat-table [dataSource]="dataSourceFilms" *ngIf="!isLoading" class="mat-elevation-z8 demo-table bg-opacity-50">
 
     <!-- Name Column -->
-<!--    <ng-container matColumnDef="title">-->
-<!--      <th mat-header-cell *matHeaderCellDef> Title </th>-->
-<!--      <td mat-cell *matCellDef="let film" (click)="onClick(film)">{{film.title}}</td>-->
-<!--    </ng-container>-->
-
     <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef> Title </th>
-      <td mat-cell *matCellDef="let planet">{{planet.name}}</td>
+      <th mat-header-cell *matHeaderCellDef style="width: 10%"> Title </th>
+      <td mat-cell *matCellDef="let film" (click)="onClick(film)">{{film.title}}</td>
     </ng-container>
 
     <!-- Climate Column -->
     <ng-container matColumnDef="director">
-      <th mat-header-cell  *matHeaderCellDef> Director </th>
+      <th mat-header-cell  *matHeaderCellDef style="width: 8%"> Director </th>
       <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.director}} </td>
     </ng-container>
 
     <!-- Gravity Column -->
     <ng-container matColumnDef="producer">
-      <th mat-header-cell *matHeaderCellDef> Producer </th>
+      <th mat-header-cell *matHeaderCellDef style="width: 12%"> Producer </th>
       <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.producer}} </td>
     </ng-container>
 
     <!-- Rotation Column -->
     <ng-container matColumnDef="episode">
-      <th mat-header-cell *matHeaderCellDef> Episode </th>
+      <th mat-header-cell *matHeaderCellDef style="width: 3.5%"> Episode </th>
       <td mat-cell *matCellDef="let film" (click)="onClick(film)"> {{film.episode_id}} </td>
     </ng-container>
 
@@ -69,11 +64,9 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumnsFilms"></tr>
-
-    <!--Table's click control-->
     <tr
       mat-row
-      (click)="clickedRows.add(row)"
+      (click)="selectRow(row)"
       (dblclick)="clickedRows.delete(row)"
       [class.demo-row-is-clicked]="clickedRows.has(row)"
       *matRowDef="let row; columns: displayedColumnsFilms"
@@ -85,44 +78,34 @@
       </tr>
   </table>
 
-  <!--Spinner-->
-  <!--<div id="spinner" *ngIf="isLoading">-->
-  <!--  <mat-spinner></mat-spinner>-->
-  <!--</div>-->
-
-  <!--Failed information that pops when a row is clicked-->
-  <div class="card-header">
-    <div *ngIf="clickedRows.size">
-      <p id="failed">
-        Requests I failed
-      </p>
-    </div>
-  <!--  <div>-->
-  <!--    <ul>-->
-  <!--      <li *ngFor="let clickedRow of clickedRows">-->
-  <!--        <p id="Title">Titulo: {{clickedRow.title}}</p>-->
-  <!--        <p>Planets: {{clickedRow.planets}}</p>-->
-  <!--        <p>Species: {{clickedRow.species}}</p>-->
-  <!--        <p>Starships: {{clickedRow.starships}}</p>-->
-  <!--        <p>Vehicles: {{clickedRow.vehicles}}</p>-->
-  <!--      </li>-->
-  <!--    </ul>-->
-  <!--  </div>-->
-
-  </div>
-  <div *ngFor="let planet of planets">
-    <p>{{planet.name}}</p>
-  </div>
-  <p>*********************************</p>
-  <ul *ngFor="let specie of species">
-    <li>{{specie.name}}</li>
-  </ul>
-  <p>*********************************</p>
-  <ul *ngFor="let starship of starships">
-    <li>{{starship.name}}</li>
-  </ul>
-  <p>*********************************</p>
-  <ul *ngFor="let vehicle of vehicles">
-    <li>{{vehicle.name}}</li>
-  </ul>
+  <!--Extra information that pops when a row is clicked-->
+  <mat-card-header class="mat-card-header" *ngIf="clickedRows.size">
+      <p id="extraInfo">Extra Info</p>
+  </mat-card-header>
+  <mat-card *ngIf="clickedRows.size" style="display: flex; justify-content: center; background-color: #f6f6f6">
+    <mat-card >
+      <p style="font-weight: bold">Planets featured</p>
+        <ul *ngFor="let planet of planets">
+        <li>{{planet.name}}</li>
+      </ul>
+    </mat-card>
+    <mat-card style="margin-left: 1%">
+      <p style="font-weight: bold">Species featured</p>
+        <ul *ngFor="let specie of species">
+          <li>{{specie.name}}</li>
+        </ul>
+    </mat-card>
+    <mat-card style="margin-left: 1%">
+      <p style="font-weight: bold">Starships featured</p>
+      <ul *ngFor="let starship of starships">
+        <li>{{starship.name}}</li>
+      </ul>
+    </mat-card>
+    <mat-card style="margin-left: 1%">
+      <p style="font-weight: bold">Vehicles featured</p>
+      <ul *ngFor="let vehicle of vehicles">
+      <li>{{vehicle.name}}</li>
+      </ul>
+    </mat-card>
+  </mat-card>
 </body>

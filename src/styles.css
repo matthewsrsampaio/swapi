@@ -71,11 +71,17 @@ th {
   justify-content: center;
 }
 
-#failed {
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  color: #3a3a3a;
   margin-top: 2%;
   font-size: xx-large;
-  text-align: center;
   font-weight: bolder;
+  text-align: center;
 }
 
 #Title {
@@ -91,6 +97,7 @@ th {
 
 #footMessage {
   font-size: medium;
+  font-min-size: medium;
   margin-left: 38%;
   color: yellow;
 }
@@ -98,3 +105,8 @@ th {
 .card-body {
   margin-bottom: 3%;
 }
+
+mat-card-header #extraInfo {
+  color: #3a3a3a;
+}
+
