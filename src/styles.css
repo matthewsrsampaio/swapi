@@ -100,7 +100,6 @@ mat-card-header {
 mat-toolbar p{
   font-size: large;
   font-min-size: medium;
-  /*margin-left: 39%;*/
   margin-left: 36%;
   margin-bottom: 8px;
   color: yellow;
@@ -110,8 +109,7 @@ div p {
   color: yellow;
   font-size: large;
   text-align: center;
-  min-height: 8%;
-  padding-top: 25px;
+  padding-top: 10px;
   background-color: #673ab7;
 
 }
@@ -119,12 +117,6 @@ div p {
 .card-body {
   margin-bottom: 3%;
 }
-
-/*.mat-card-header p {*/
-/*  font-size: xxx-large;*/
-/*  color: #3a3a3a;*/
-/*  background-color: #f6f6f6;*/
-/*}*/
 
 #columnTitle {
   width: 10%;
