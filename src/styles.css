@@ -107,10 +107,8 @@ mat-toolbar p{
 
 footer p {
   color: yellow;
-  font-size: large;
+  font-size: medium;
   text-align: center;
-  height: 7%;
-  padding-top: 10px;
   background-color: #673ab7;
 
 }
