@@ -1,8 +1,6 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row (click)="home()">
-    <p *ngIf="classe">Matthews Ribeiro Sampaio - Frontend Challenge - SWAPI - ASCAN</p>
-    <div *ngIf="!classe" id="420">
-      <p>Great thanks to brunowisk, Harisson Maia, Robson Azevedo, Valdir Castro, Mario Silva, Lizie Sancho. It wouldn't be possible without you!</p>
-    </div>
-  </mat-toolbar-row>
+<div (click)="home()" *ngIf="!classe">
+  <p>Great thanks to Bruno Rocha, Harisson Maia, Robson Azevedo, Valdir Castro, Mario Silva, Lizie Sancho, Samuel Araújo and Mom for all the coffee. This wouldn't be possible without you guys!
+</div>
+<mat-toolbar (click)="home()" *ngIf="classe" color="primary">
+    <p>Matthews Ribeiro Sampaio - Frontend Challenge - SWAPI - ASCAN</p>
 </mat-toolbar>
