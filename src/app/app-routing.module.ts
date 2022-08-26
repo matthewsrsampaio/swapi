@@ -1,7 +1,7 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {PlanetComponent} from "./components/planet/planet.component";
-import {PeopleComponent} from "./components/people/people.component";
+import {CharactersComponent} from "./components/characters/characters.component";
 import {FilmComponent} from "./components/film/film.component";
 import {SpecieComponent} from "./components/specie/specie.component";
 import {StarshipComponent} from "./components/starship/starship.component";
@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   {path: '', redirectTo:'/home', pathMatch:'full'},
   {path: 'home',  component: HomeComponent},
   {path: 'planets', component: PlanetComponent, children: [{path: ':id', component: PlanetComponent}]},
-  {path: 'peoples', component: PeopleComponent},
+  {path: 'characters', component: CharactersComponent},
   {path: 'films', component: FilmComponent, children: [{path: ':id', component: FilmComponent}]},
   {path: 'species', component: SpecieComponent},
   {path: 'starships', component: StarshipComponent},

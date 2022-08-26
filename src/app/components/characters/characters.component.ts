@@ -9,11 +9,11 @@ import {Specie} from "../../models/specie";
 import {Vehicle} from "../../models/vehicle";
 
 @Component({
-  selector: 'app-people',
-  templateUrl: './people.component.html',
-  styleUrls: ['./people.component.css']
+  selector: 'app-characters',
+  templateUrl: './characters.component.html',
+  styleUrls: ['./characters.component.css']
 })
-export class PeopleComponent implements OnInit {
+export class CharactersComponent implements OnInit {
   people: People[] = [];
   films: Film[] = [];
   starships: Starship[] = [];

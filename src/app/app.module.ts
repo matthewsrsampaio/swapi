@@ -15,7 +15,7 @@ import { SpecieComponent } from './components/specie/specie.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
-import {PeopleComponent} from "./components/people/people.component";
+import {CharactersComponent} from "./components/characters/characters.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
@@ -33,7 +33,7 @@ import {MatButtonModule} from '@angular/material/button';
     VehicleComponent,
     SpecieComponent,
     NavbarComponent,
-    PeopleComponent,
+    CharactersComponent,
     FooterComponent,
     HomeComponent
   ],
