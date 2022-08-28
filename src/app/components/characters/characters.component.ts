@@ -102,7 +102,7 @@ export class CharactersComponent implements OnInit {
           this.vehicles.push(data)
         })
     })
-    //This requestis special because it's not into an array, therefore its request different
+    //This request is special because it's not inside an array, therefore its request is different
       const splitPath = people.homeworld.split('/')
       const id: string = splitPath[splitPath.length - 2]
       this.serviceServices.getPlanet(parseInt(id))
