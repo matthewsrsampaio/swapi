@@ -73,6 +73,7 @@ export class FilmComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(film: Film) {
+    //Method sets arrays to empty
     this.clearData();
     //All methods bellow are responsible to collect extra data
     film.planets.forEach(plan => {

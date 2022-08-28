@@ -107,7 +107,7 @@
         <li>{{film.title}}</li>
       </ul>
     </mat-card>
-    <mat-card class="mat-elevation-z5">
+    <mat-card class="mat-elevation-z5" *ngIf="!validateResidents">
       <p class="mat-headline">Residents</p>
       <ul *ngFor="let resident of residents">
         <li>{{resident.name}}</li>

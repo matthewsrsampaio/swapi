@@ -5,7 +5,6 @@ import {MatTableDataSource} from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";
 import {Film} from "../../models/film";
 import {People} from "../../models/people";
-import {Starship} from "../../models/startship";
 
 @Component({
   selector: 'app-vehicle',
@@ -19,8 +18,9 @@ export class VehicleComponent implements OnInit {
   displayedColumns: string[] = ['name', 'model', 'passengers', 'crew', 'class', 'cargoCapac', 'consumables', 'cost', 'length', 'manufacturer', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.vehicles);
   clickedRows = new Set<Vehicle>();
-  isLoading = true;
   selectedRow: any;
+  isLoading = true;
+  validatePilots = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
@@ -69,6 +69,9 @@ export class VehicleComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(vehicle: Vehicle) {
+    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
+    //This validation is used to decide whether the Extra Card will be shown or not.
+    this.validatePilots = true;
     this.clearData();
     //All methods bellow are responsible to collect extra data
     vehicle.films.forEach(film => {
@@ -81,6 +84,9 @@ export class VehicleComponent implements OnInit {
       this.serviceServices.getStarship(parseInt(this.collectUrlId(pilot)))
         .subscribe( (data) => {
           this.pilots.push(data)
+          if (this.pilots) {
+            this.validatePilots = false;
+          }
         })
     })
   }

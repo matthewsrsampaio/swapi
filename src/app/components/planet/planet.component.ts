@@ -19,8 +19,10 @@ export class PlanetComponent implements OnInit {
   displayedColumns: string[] = ['name', 'climate', 'gravity', 'rotation', 'diameter', 'orbital', 'population', 'surfaceWater', 'terrain', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.planets);
   clickedRows = new Set<Planet>();
-  isLoading = true;
   selectedRow: any;
+  isLoading = true;
+  validateResidents = true;
+
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
@@ -68,6 +70,10 @@ export class PlanetComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(planet: Planet) {
+    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
+    //This validation is used to decide whether the Extra Card will be shown or not.
+    this.validateResidents = true;
+    //Method sets arrays to empty
     this.clearData();
     //All methods bellow are responsible to collect extra data
     planet.films.forEach(film => {
@@ -80,6 +86,9 @@ export class PlanetComponent implements OnInit {
       this.serviceServices.getPeople(parseInt(this.collectUrlId(resid)))
         .subscribe( (data) => {
           this.residents.push(data)
+          if (this.validateResidents) {
+            this.validateResidents = false;
+          }
         })
     })
   }

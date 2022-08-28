@@ -24,8 +24,12 @@ export class CharactersComponent implements OnInit {
   displayedColumns: string[] = ['name', 'gender', 'skinColor', 'hairColor', 'eyeColor', 'height', 'mass', 'birth', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.people);
   clickedRows = new Set<People>();
-  isLoading = true;
   selectedRow: any;
+  isLoading = true;
+  validateSpecies = true;
+  validateStarships = true;
+  validateVehicles = true;
+
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
@@ -76,7 +80,20 @@ export class CharactersComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(people: People) {
+    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
+    //This validation is used to decide whether the Extra Card will be shown or not.
+    this.validateSpecies = true;
+    this.validateStarships = true;
+    this.validateVehicles = true;
+    //Method sets arrays to empty
     this.clearData();
+    //This request is special because it's not inside an array, therefore its request is different
+    const splitPath = people.homeworld.split('/')
+    const id: string = splitPath[splitPath.length - 2]
+    this.serviceServices.getPlanet(parseInt(id))
+      .subscribe((data) => {
+        this.planets.push(data)
+      })
     //All methods bellow are responsible to collect extra data
     people.films.forEach(film => {
       this.serviceServices.getFilm(parseInt(this.collectUrlId(film)))
@@ -88,26 +105,28 @@ export class CharactersComponent implements OnInit {
       this.serviceServices.getStarship(parseInt(this.collectUrlId(star)))
         .subscribe((data) => {
           this.starships.push(data)
+          if (this.vehicles) {
+            this.validateStarships = false;
+          }
         })
     })
     people.species.forEach(spec => {
       this.serviceServices.getSpecie(parseInt(this.collectUrlId(spec)))
         .subscribe((data) => {
           this.species.push(data)
+          if (this.species) {
+            this.validateSpecies = false;
+          }
         })
     })
     people.vehicles.forEach(vehi => {
       this.serviceServices.getVehicle(parseInt(this.collectUrlId(vehi)))
         .subscribe((data) => {
           this.vehicles.push(data)
+          if (this.vehicles) {
+            this.validateVehicles = false;
+          }
         })
     })
-    //This request is special because it's not inside an array, therefore its request is different
-      const splitPath = people.homeworld.split('/')
-      const id: string = splitPath[splitPath.length - 2]
-      this.serviceServices.getPlanet(parseInt(id))
-        .subscribe((data) => {
-          this.planets.push(data)
-        })
   }
 }

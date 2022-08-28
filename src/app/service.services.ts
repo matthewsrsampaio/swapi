@@ -45,10 +45,6 @@ export class ServiceServices {
     return this.http.get<Planet>(`${this.endpointPlanets}/${id}`);
   }
 
-  getHomeworld(id: number): Observable<any> {
-    return this.http.get<Planet>(`${this.endpointPlanets}/${id}`);
-  }
-
   getAllSpecies(): Observable<any> {
     return this.http.get<Specie>(this.endpointSpecies);
   }

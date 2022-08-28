@@ -18,8 +18,10 @@ export class StarshipComponent implements OnInit {
   displayedColumns: string[] = ['name', 'model', 'mglt', 'cargo', 'consumable', 'cost', 'crew', 'hyperdrive', 'length', 'manufacturer', 'atmSpeed', 'passengers', 'created','edited'];
   dataSource = new MatTableDataSource(this.starships);
   clickedRows = new Set<Starship>();
-  isLoading = true;
   selectedRow: any;
+  isLoading = true;
+  validatePilots = true;
+
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
@@ -67,6 +69,10 @@ export class StarshipComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(starship: Starship) {
+    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
+    //This validation is used to decide whether the Extra Card will be shown or not.
+    this.validatePilots = true;
+    //Method sets arrays to empty
     this.clearData();
     //All methods bellow are responsible to collect extra data
     starship.films.forEach(film => {
@@ -79,6 +85,9 @@ export class StarshipComponent implements OnInit {
       this.serviceServices.getStarship(parseInt(this.collectUrlId(pilot)))
         .subscribe( (data) => {
           this.pilots.push(data)
+          if (this.pilots) {
+            this.validatePilots = false;
+          }
         })
     })
   }

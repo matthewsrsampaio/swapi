@@ -113,7 +113,7 @@
         <li>{{film.title}}</li>
       </ul>
     </mat-card>
-    <mat-card class="mat-elevation-z5">
+    <mat-card class="mat-elevation-z5" *ngIf="!validatePilots">
       <p class="mat-headline">Pilots</p>
       <ul *ngFor="let pilot of pilots">
         <li>{{pilot.name}}</li>

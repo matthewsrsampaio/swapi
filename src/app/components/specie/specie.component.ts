@@ -18,8 +18,8 @@ export class SpecieComponent implements OnInit {
   displayedColumns: string[] = ['name', 'skinColor', 'eyeColor', 'hairColor', 'averageHeight', 'averageLifespan', 'classification', 'language', 'designation', 'created', 'edited'];
   dataSource = new MatTableDataSource(this.species);
   clickedRows = new Set<Specie>();
-  isLoading = true;
   selectedRow: any;
+  isLoading = true;
 
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
@@ -67,6 +67,7 @@ export class SpecieComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(specie: Specie) {
+    //Method sets arrays to empty
     this.clearData();
     //All methods bellow are responsible to collect extra data
     specie.films.forEach(film => {

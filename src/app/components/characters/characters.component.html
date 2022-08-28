@@ -96,33 +96,33 @@
   </mat-card-header>
   <mat-card id="matCardExt" class="mat-elevation-z10" *ngIf="clickedRows.size">
     <mat-card class="mat-elevation-z5">
+      <p class="mat-headline">Homeworld</p>
+      <ul *ngFor="let planet of planets">
+        <li>{{planet.name}}</li>
+      </ul>
+    </mat-card>
+    <mat-card class="mat-elevation-z5">
       <p class="mat-headline">Was featured on</p>
       <ul *ngFor="let film of films">
         <li>{{film.title}}</li>
       </ul>
     </mat-card>
-    <mat-card class="mat-elevation-z5">
+    <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
       <p class="mat-headline">Specie</p>
       <ul *ngFor="let specie of species">
         <li>{{specie.name}}</li>
       </ul>
     </mat-card>
-    <mat-card class="mat-elevation-z5">
+    <mat-card class="mat-elevation-z5" *ngIf="!validateStarships">
       <p class="mat-headline">Starships related</p>
       <ul *ngFor="let starship of starships">
         <li>{{starship.name}}</li>
       </ul>
     </mat-card>
-    <mat-card class="mat-elevation-z5">
+    <mat-card class="mat-elevation-z5" *ngIf="!validateVehicles">
       <p class="mat-headline">Vehicles related</p>
       <ul *ngFor="let vehicle of vehicles">
         <li>{{vehicle.name}}</li>
-      </ul>
-    </mat-card>
-    <mat-card class="mat-elevation-z5">
-      <p class="mat-headline">Homeworld</p>
-      <ul *ngFor="let planet of planets">
-        <li>{{planet.name}}</li>
       </ul>
     </mat-card>
   </mat-card>
