@@ -2,11 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
-#Have NODE ready
+- Have NODE ready, then...
 
 Run `npm install`. If it doesn't work try `npm install --force`
 
-#Install Angular Material
+- Install Angular Material
 
 Run `ng add @angular/material`
 
