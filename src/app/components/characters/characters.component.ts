@@ -46,14 +46,19 @@ export class CharactersComponent implements OnInit {
     this.clickedRows.add(this.selectedRow);
   }
 
-  //Method to clean extra data
-  clearData() {
+  //Method to reset extra data & validation
+  resetData() {
     this.people = []
     this.films = [];
     this.starships = [];
     this.species = [];
     this.vehicles = [];
     this.planets = [];
+    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
+    //This validation is used to decide whether the Extra Card will be shown or not.
+    this.validateSpecies = true;
+    this.validateStarships = true;
+    this.validateVehicles = true;
 }
 
   //This method collects all data from SWAPI
@@ -80,13 +85,8 @@ export class CharactersComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(people: People) {
-    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
-    //This validation is used to decide whether the Extra Card will be shown or not.
-    this.validateSpecies = true;
-    this.validateStarships = true;
-    this.validateVehicles = true;
-    //Method sets arrays to empty
-    this.clearData();
+    //Method to reset extra data & validation
+    this.resetData();
     //This request is special because it's not inside an array, therefore its request is different
     const splitPath = people.homeworld.split('/')
     const id: string = splitPath[splitPath.length - 2]

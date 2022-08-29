@@ -37,7 +37,7 @@ export class SpecieComponent implements OnInit {
   }
 
   //Method to clean extra data
-  clearData() {
+  resetData() {
     this.species = [];
     this.films = [];
     this.peoples = [];
@@ -68,7 +68,7 @@ export class SpecieComponent implements OnInit {
   //Method responsible for bringing the extra data
   onClick(specie: Specie) {
     //Method sets arrays to empty
-    this.clearData();
+    this.resetData();
     //All methods bellow are responsible to collect extra data
     specie.films.forEach(film => {
       this.serviceServices.getFilm(parseInt(this.collectUrlId(film)))

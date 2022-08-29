@@ -41,7 +41,7 @@ export class FilmComponent implements OnInit {
   }
 
   //Method to clean extra data
-  clearData() {
+  resetData() {
     this.films = [];
     this.planets = [];
     this.starships = [];
@@ -74,7 +74,7 @@ export class FilmComponent implements OnInit {
   //Method responsible for bringing the extra data
   onClick(film: Film) {
     //Method sets arrays to empty
-    this.clearData();
+    this.resetData();
     //All methods bellow are responsible to collect extra data
     film.planets.forEach(plan => {
       this.serviceServices.getPlanet(parseInt(this.collectUrlId(plan)))

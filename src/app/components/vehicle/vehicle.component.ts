@@ -37,11 +37,14 @@ export class VehicleComponent implements OnInit {
     this.clickedRows.add(this.selectedRow);
   }
 
-  //Method to clean extra data
-  clearData() {
+  //Method to reset extra data & validation
+  resetData() {
     this.vehicles = [];
     this.films = [];
     this.pilots = [];
+    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
+    //This validation is used to decide whether the Extra Card will be shown or not.
+    this.validatePilots = true;
   }
 
   //This method collects all data from SWAPI
@@ -69,10 +72,8 @@ export class VehicleComponent implements OnInit {
 
   //Method responsible for bringing the extra data
   onClick(vehicle: Vehicle) {
-    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
-    //This validation is used to decide whether the Extra Card will be shown or not.
-    this.validatePilots = true;
-    this.clearData();
+    //Method to reset extra data & validation
+    this.resetData();
     //All methods bellow are responsible to collect extra data
     vehicle.films.forEach(film => {
       this.serviceServices.getFilm(parseInt(this.collectUrlId(film)))
