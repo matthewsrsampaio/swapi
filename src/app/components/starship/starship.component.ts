@@ -85,7 +85,6 @@ export class StarshipComponent implements OnInit {
       this.serviceServices.getPeople(parseInt(this.collectUrlId(pilot)))
         .subscribe( (data) => {
           this.pilots.push(data)
-          console.log(this.pilots)
           if (this.pilots) {
             this.validatePilots = false;
           }
