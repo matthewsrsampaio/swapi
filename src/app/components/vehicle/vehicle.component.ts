@@ -81,7 +81,7 @@ export class VehicleComponent implements OnInit {
         })
     })
     vehicle.pilots.forEach(pilot => {
-      this.serviceServices.getStarship(parseInt(this.collectUrlId(pilot)))
+      this.serviceServices.getPeople(parseInt(this.collectUrlId(pilot)))
         .subscribe( (data) => {
           this.pilots.push(data)
           if (this.pilots) {

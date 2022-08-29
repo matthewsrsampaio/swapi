@@ -82,9 +82,10 @@ export class StarshipComponent implements OnInit {
         })
     })
     starship.pilots.forEach(pilot => {
-      this.serviceServices.getStarship(parseInt(this.collectUrlId(pilot)))
+      this.serviceServices.getPeople(parseInt(this.collectUrlId(pilot)))
         .subscribe( (data) => {
           this.pilots.push(data)
+          console.log(this.pilots)
           if (this.pilots) {
             this.validatePilots = false;
           }
