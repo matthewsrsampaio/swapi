@@ -105,7 +105,7 @@ export class CharactersComponent implements OnInit {
       this.serviceServices.getStarship(parseInt(this.collectUrlId(star)))
         .subscribe((data) => {
           this.starships.push(data)
-          if (this.vehicles) {
+          if (this.starships) {
             this.validateStarships = false;
           }
         })
