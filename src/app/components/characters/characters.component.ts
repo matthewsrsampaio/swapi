@@ -30,7 +30,6 @@ export class CharactersComponent implements OnInit {
   validateStarships = true;
   validateVehicles = true;
 
-
   constructor(private serviceServices : ServiceServices, public http: HttpClient) {}
 
   ngOnInit() {
@@ -87,7 +86,7 @@ export class CharactersComponent implements OnInit {
   onClick(people: People) {
     //Method to reset extra data & validation
     this.resetData();
-    //This request is special because it's not inside an array, therefore its request is different
+    //This request is special because it's not inside an array, it comes as a String. Therefore its request is different
     const splitPath = people.homeworld.split('/')
     const id: string = splitPath[splitPath.length - 2]
     this.serviceServices.getPlanet(parseInt(id))

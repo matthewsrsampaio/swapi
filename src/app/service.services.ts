@@ -8,7 +8,7 @@ import {Specie} from "./models/specie";
 import {Starship} from "./models/startship";
 import {Vehicle} from "./models/vehicle";
 
-//Primeira parte da captura da SWAPI
+//First part of the SWAPI's consumption
 @Injectable({providedIn: 'root'})
 export class ServiceServices {
   private readonly endpointFilms = 'https://swapi.dev/api/films/';
@@ -20,7 +20,7 @@ export class ServiceServices {
 
   constructor(public http: HttpClient) {}
 
-  //Segunda parte da captura da SWAPI
+  //Second part of the SWAPI's consumption
   getAllFilm(): Observable<any> {
     return this.http.get<Film>(this.endpointFilms);
   }
