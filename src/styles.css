@@ -55,7 +55,6 @@ mat-card mat-card p {
 
 .demo-row-is-clicked {
   font-weight: bold;
-  cursor: pointer;
 }
 
 .mat-form-field {
