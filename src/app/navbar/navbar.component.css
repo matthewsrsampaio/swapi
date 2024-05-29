@@ -6,6 +6,7 @@
   -webkit-filter: drop-shadow(2px 0mm 0mm red);
   transform: scale(1.1);
   transition: transform 1s;
+  cursor : pointer;
 }
 
 .active {

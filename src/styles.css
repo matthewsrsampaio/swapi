@@ -50,10 +50,12 @@ mat-card mat-card p {
 
 .mat-row:hover .mat-cell {
   border-color: #673ab7;
+  cursor: pointer;
 }
 
 .demo-row-is-clicked {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .mat-form-field {
