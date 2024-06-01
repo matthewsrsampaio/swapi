@@ -87,25 +87,33 @@
     <mat-card class="mat-elevation-z5">
       <p class="mat-headline">Planets featured</p>
         <ul *ngFor="let planet of planets">
-        <li>{{planet.name}}</li>
+          <mat-card class="listCard">
+            <li>{{planet.name}}</li>
+          </mat-card>
       </ul>
     </mat-card>
     <mat-card class="mat-elevation-z5">
       <p class="mat-headline">Species featured</p>
         <ul *ngFor="let specie of species">
-          <li>{{specie.name}}</li>
+          <mat-card class="listCard">
+            <li>{{specie.name}}</li>
+          </mat-card>
         </ul>
     </mat-card>
     <mat-card class="mat-elevation-z5">
       <p class="mat-headline">Starships featured</p>
       <ul *ngFor="let starship of starships">
-        <li>{{starship.name}}</li>
+        <mat-card class="listCard">
+          <li>{{starship.name}}</li>
+        </mat-card>
       </ul>
     </mat-card>
     <mat-card class="mat-elevation-z5">
       <p class="mat-headline">Vehicles featured</p>
       <ul *ngFor="let vehicle of vehicles">
-      <li>{{vehicle.name}}</li>
+        <mat-card class="listCard">
+          <li>{{vehicle.name}}</li>
+        </mat-card>
       </ul>
     </mat-card>
   </mat-card>

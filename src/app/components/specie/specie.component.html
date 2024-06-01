@@ -98,19 +98,23 @@
 
   <!--Extra information that pops when a row is clicked-->
   <mat-card-header class="mat-card-header" *ngIf="clickedRows.size">
-    <p id="extraInfo">Extra Info</p>
+    <p class="mat-headline">Extra Info</p>
   </mat-card-header>
   <mat-card id="matCardExt" class="mat-elevation-z10" *ngIf="clickedRows.size">
     <mat-card class="mat-elevation-z5">
       <p class="mat-headline">Was featured on</p>
       <ul *ngFor="let film of films">
-        <li>{{film.title}}</li>
+        <mat-card class="listCard">
+          <li>{{film.title}}</li>
+        </mat-card>
       </ul>
     </mat-card>
     <mat-card class="mat-elevation-z5">
       <p class="mat-headline">Characters</p>
       <ul *ngFor="let people of peoples">
-        <li>{{people.name}}</li>
+        <mat-card class="listCard">
+          <li>{{people.name}}</li>
+        </mat-card>
       </ul>
     </mat-card>
   </mat-card>
