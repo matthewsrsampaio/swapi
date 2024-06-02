@@ -2,7 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
-- Have NODE ready, then...
+- Have Angular 13.3.3 or later.
+- Have NODE ready.
 
   Run `npm install`. If it doesn't work try `npm install --force`
 
