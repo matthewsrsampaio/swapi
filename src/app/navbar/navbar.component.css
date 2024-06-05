@@ -1,5 +1,5 @@
 #mainImg {
-  width: 8%;
+  width: 6%;
 }
 
 #mainImg:hover {
@@ -14,10 +14,6 @@
   background-color: #f6f6f6;
 }
 
-mat-toolbar div {
-  margin-left: 27%;
-}
-
 mat-toolbar div button {
   text-align: center;
   margin-left: 2%;
@@ -26,4 +22,10 @@ mat-toolbar div button {
 mat-toolbar div button:hover {
   color: #673ab7;
   background-color: #f6f6f6;
+}
+
+.example-button-row{
+  width: 700px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

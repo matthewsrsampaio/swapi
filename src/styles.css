@@ -1,12 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-li {
-  margin-left: 20px;
-}
-
-.listCard {
-  margin-bottom: 2px;
-}
-
 body {
   min-height: 100vh;
   margin: 0;
@@ -37,17 +28,31 @@ h2 {
 
 #matCardExt {
   background-color: #f6f6f6;
-  bottom: 5%;
   display: flex;
   justify-content: center;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
   width: 90%;
+  margin: auto;
 }
 
-mat-card mat-card {
-  margin-left: 1%;
+mat-card #extraInfo {
+  font-size: 50px;
+  margin-top: 5%;
+  font-weight: bolder;
+  text-align: center;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.mat-headline {
+  color: #3a3a3a;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
 }
 
 mat-card mat-card p {
@@ -83,37 +88,14 @@ mat-card mat-card p {
   height: auto;
 }
 
-.example-button-row{
-  justify-content: center;
-}
-
-th {
-  font-weight: bolder;
-  color: #3a3a3a;
-}
-
 #spinner {
   padding-top: 5%;
   display: flex;
   justify-content: center;
 }
 
-mat-card-header {
-  display: flex;
-  justify-content: center;
-}
-
-.mat-headline {
-  color: #3a3a3a;
-  margin-top: 2%;
-  font-size: xx-large;
-  font-weight: bolder;
-  text-align: center;
-}
-
 mat-toolbar p{
   font-size: large;
-  font-min-size: medium;
   margin-left: 36%;
   margin-bottom: 8px;
   color: yellow;
@@ -125,74 +107,4 @@ footer p {
   text-align: center;
   background-color: #673ab7;
 
-}
-
-.card-body {
-  margin-bottom: 3%;
-}
-
-#columnTitle {
-  width: 10%;
-}
-
-#columnDir {
-  width: 8%;
-}
-
-#columnProd {
-  width: 12%
-}
-
-#columnEpi {
-  width: 4%;
-}
-
-#columnCargo {
-  width: 8%;
-}
-
-#columnMglt {
-  width: 3%;
-  padding-left: 5px;
-}
-
-#columnMaxSpd {
-  padding-right: 5px;
-}
-
-#columnCost {
-  width: 8%;
-}
-
-#columnHyper {
-  width: 5%;
-  padding-left: 10px;
-}
-
-#columnModel {
-  width: 10%;
-}
-
-#columnManufac {
-  padding-left: 10px;
-}
-
-#columnNamepassengers {
-  padding-right: 10px
-}
-
-#columnNameCost {
-  padding-left: 5px;
-}
-
-#columnNameLength {
-  padding-right: 10px;
-}
-
-#columnNameVehiclePassengers {
-  padding-right: 10px;
-}
-
-#columnNameCrew {
-  padding-right: 10px;
 }

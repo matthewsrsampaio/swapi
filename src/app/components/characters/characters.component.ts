@@ -8,6 +8,7 @@ import {Starship} from "../../models/startship";
 import {Specie} from "../../models/specie";
 import {Vehicle} from "../../models/vehicle";
 import {Planet} from "../../models/planet";
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-characters',
@@ -53,8 +54,8 @@ export class CharactersComponent implements OnInit {
     this.species = [];
     this.vehicles = [];
     this.planets = [];
-    //Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
-    //This validation is used to decide whether the Extra Card will be shown or not.
+    // Resets validation to TRUE every click at the methods below, if request fail validation gets FALSE.
+    // This validation is used to decide whether the Extra Card will be shown or not.
     this.validateSpecies = true;
     this.validateStarships = true;
     this.validateVehicles = true;
@@ -127,5 +128,7 @@ export class CharactersComponent implements OnInit {
           }
         })
     })
+    //Scrolls down page at click
+    window.scrollTo(0,document.body.scrollHeight);
   }
 }

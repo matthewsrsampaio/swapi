@@ -6,6 +6,7 @@
 </div>
 
 <body *ngIf="!isLoading">
+  <mat-card>
   <!--Filter-->
   <mat-form-field appearance="legacy" class="filter">
     <mat-label>Filter</mat-label>
@@ -91,54 +92,55 @@
   </table>
 
   <!--Extra information that pops when a row is clicked-->
-  <mat-card-header class="mat-card-header" *ngIf="clickedRows.size">
+  <!-- <mat-card-header class="mat-card-header" *ngIf="clickedRows.size">
     <p class="mat-headline">Extra Info</p>
-  </mat-card-header>
-  <mat-card id="matCardExt" class="mat-elevation-z10" *ngIf="clickedRows.size">
-    <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
-      <p class="mat-headline">Homeworld</p>
-      <ul *ngFor="let planet of planets">
-        <mat-card class="listCard">
-          <li>{{planet.name}}</li>
-        </mat-card>
-
-      </ul>
-    </mat-card>
-    <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
-      <p class="mat-headline">Was featured on</p>
-      <ul *ngFor="let film of films">
-        <mat-card class="listCard">
-          <li>{{film.title}}</li>
-        </mat-card>
-
-      </ul>
-    </mat-card>
-    <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
-      <p class="mat-headline">Specie</p>
-      <ul *ngFor="let specie of species">
-        <mat-card class="listCard">
-          <li>{{specie.name}}</li>
-        </mat-card>
-
-      </ul>
-    </mat-card>
-    <mat-card class="mat-elevation-z5" *ngIf="!validateStarships">
-      <p class="mat-headline">Starships related</p>
-      <ul *ngFor="let starship of starships">
-        <mat-card class="listCard">
-          <li>{{starship.name}}</li>
-        </mat-card>
-
-      </ul>
-    </mat-card>
-    <mat-card class="mat-elevation-z5" *ngIf="!validateVehicles">
-      <p class="mat-headline">Vehicles related</p>
-      <ul *ngFor="let vehicle of vehicles">
-        <mat-card class="listCard">
-          <li>{{vehicle.name}}</li>
-        </mat-card>
-
-      </ul>
+  </mat-card-header> -->
+  <!-- <mat-card id="super-card"> -->
+    <p id="extraInfo">Extra Info</p>
+    <mat-card id="matCardExt" class="mat-elevation-z10">
+      <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
+        <h1 class="mat-headline">Homeworld</h1>
+        <ul *ngFor="let planet of planets">
+          <mat-card class="listCard">
+            <li>{{planet.name}}</li>
+          </mat-card>
+        </ul>
+      </mat-card>
+      <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
+        <p class="mat-headline">Was featured on</p>
+        <ul *ngFor="let film of films">
+          <mat-card class="listCard">
+            <li>{{film.title}}</li>
+          </mat-card>
+        </ul>
+      </mat-card>
+      <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
+        <p class="mat-headline">Specie</p>
+        <ul *ngFor="let specie of species">
+          <mat-card class="listCard">
+            <li>{{specie.name}}</li>
+          </mat-card>
+        </ul>
+      </mat-card>
+      <mat-card class="mat-elevation-z5" *ngIf="!validateStarships">
+        <p class="mat-headline">Starships related</p>
+        <ul *ngFor="let starship of starships">
+          <mat-card class="listCard">
+            <li>{{starship.name}}</li>
+          </mat-card>
+        </ul>
+      </mat-card>
+      <mat-card class="mat-elevation-z5" *ngIf="!validateVehicles">
+        <p class="mat-headline">Vehicles related</p>
+        <ul *ngFor="let vehicle of vehicles">
+          <mat-card class="listCard">
+            <li>{{vehicle.name}}</li>
+          </mat-card>
+        </ul>
+      </mat-card>
+      <mat-card *ngIf="validateSpecies && validateStarships && validateVehicles">
+        <p>No data</p>
+      </mat-card>
     </mat-card>
   </mat-card>
 </body>
