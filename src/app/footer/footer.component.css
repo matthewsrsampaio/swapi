@@ -1,1 +1,13 @@
+p {
+  color: yellow;
+  font-size: larger;
+  text-align: center;
+  background-color: #673ab7;
+}
 
+footer {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}

@@ -91,5 +91,7 @@ export class PlanetComponent implements OnInit {
           }
         })
     })
+    //Scrolls down page at click
+    window.scrollTo(0,document.body.scrollHeight);
   }
 }

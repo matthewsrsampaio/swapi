@@ -90,5 +90,7 @@ export class StarshipComponent implements OnInit {
           }
         })
     })
+    //Scrolls down page at click
+    window.scrollTo(0,document.body.scrollHeight);
   }
 }

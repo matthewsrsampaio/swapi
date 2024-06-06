@@ -7,96 +7,92 @@
 
 <body *ngIf="!isLoading">
   <mat-card>
-  <!--Filter-->
-  <mat-form-field appearance="legacy" class="filter">
-    <mat-label>Filter</mat-label>
-    <input (keyup)="applyFilter($event)" matInput #input>
-  </mat-form-field>
+    <!--Filter-->
+    <mat-form-field appearance="legacy" class="filter">
+      <mat-label>Filter</mat-label>
+      <input (keyup)="applyFilter($event)" matInput #input>
+    </mat-form-field>
 
-  <!--Table start with the information about the data I'm pulling-->
-  <table mat-table [dataSource]="dataSource" *ngIf="!isLoading" class="mat-elevation-z10 demo-table bg-opacity-50">
+    <!--Table start with the information about the data I'm pulling-->
+    <table mat-table [dataSource]="dataSource" *ngIf="!isLoading" class="mat-elevation-z10 demo-table bg-opacity-50">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person">{{person.name}}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person">{{person.name}}</td>
+      </ng-container>
 
-    <!-- Climate Column -->
-    <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef> Gender </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.gender}} </td>
-    </ng-container>
+      <!-- Climate Column -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.gender}} </td>
+      </ng-container>
 
-    <!-- Gravity Column -->
-    <ng-container matColumnDef="skinColor">
-      <th mat-header-cell *matHeaderCellDef> Skin color </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.skin_color}} </td>
-    </ng-container>
+      <!-- Gravity Column -->
+      <ng-container matColumnDef="skinColor">
+        <th mat-header-cell *matHeaderCellDef> Skin color </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.skin_color}} </td>
+      </ng-container>
 
-    <!-- Rotation Column -->
-    <ng-container matColumnDef="hairColor">
-      <th mat-header-cell *matHeaderCellDef> Hair color </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.hair_color}} </td>
-    </ng-container>
+      <!-- Rotation Column -->
+      <ng-container matColumnDef="hairColor">
+        <th mat-header-cell *matHeaderCellDef> Hair color </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.hair_color}} </td>
+      </ng-container>
 
-    <!--Eye colour Column-->
-    <ng-container matColumnDef="eyeColor">
-      <th mat-header-cell *matHeaderCellDef> Eye Color </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.eye_color}} </td>
-    </ng-container>
+      <!--Eye colour Column-->
+      <ng-container matColumnDef="eyeColor">
+        <th mat-header-cell *matHeaderCellDef> Eye Color </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.eye_color}} </td>
+      </ng-container>
 
-    <!--Height Column-->
-    <ng-container matColumnDef="height">
-      <th mat-header-cell *matHeaderCellDef> Height </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.height}}cm </td>
-    </ng-container>
+      <!--Height Column-->
+      <ng-container matColumnDef="height">
+        <th mat-header-cell *matHeaderCellDef> Height </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.height}}cm </td>
+      </ng-container>
 
-    <!--Mass Column-->
-    <ng-container matColumnDef="mass">
-      <th mat-header-cell *matHeaderCellDef> Mass </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.mass}}Kg </td>
-    </ng-container>
+      <!--Mass Column-->
+      <ng-container matColumnDef="mass">
+        <th mat-header-cell *matHeaderCellDef> Mass </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.mass}}Kg </td>
+      </ng-container>
 
-    <!--Birth year Column-->
-    <ng-container matColumnDef="birth">
-      <th mat-header-cell *matHeaderCellDef> Birth year </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.birth_year}} </td>
-    </ng-container>
+      <!--Birth year Column-->
+      <ng-container matColumnDef="birth">
+        <th mat-header-cell *matHeaderCellDef> Birth year </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.birth_year}} </td>
+      </ng-container>
 
-    <!--Created Column-->
-    <ng-container matColumnDef="created">
-      <th mat-header-cell *matHeaderCellDef> Created </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.created | date}} </td>
-    </ng-container>
+      <!--Created Column-->
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef> Created </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.created | date}} </td>
+      </ng-container>
 
-    <!--Edited Column-->
-    <ng-container matColumnDef="edited">
-      <th mat-header-cell *matHeaderCellDef> Edited </th>
-      <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.edited | date}} </td>
-    </ng-container>
+      <!--Edited Column-->
+      <ng-container matColumnDef="edited">
+        <th mat-header-cell *matHeaderCellDef> Edited </th>
+        <td mat-cell (click)="onClick(person)" *matCellDef="let person"> {{person.edited | date}} </td>
+      </ng-container>
 
-    <!--Table's click control-->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row
-        (click)="selectRow(row)"
-        (dblclick)="clickedRows.delete(row)"
-        [class.demo-row-is-clicked]="clickedRows.has(row)"
-        *matRowDef="let row; columns: displayedColumns;"
-    ></tr>
+      <!--Table's click control-->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row
+          (click)="selectRow(row)"
+          (dblclick)="clickedRows.delete(row)"
+          [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
 
-    <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
-      </tr>
-  </table>
+      <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
 
-  <!--Extra information that pops when a row is clicked-->
-  <!-- <mat-card-header class="mat-card-header" *ngIf="clickedRows.size">
-    <p class="mat-headline">Extra Info</p>
-  </mat-card-header> -->
-  <!-- <mat-card id="super-card"> -->
-    <p id="extraInfo">Extra Info</p>
+    <!--Extra information that pops when a row is clicked-->
+    <p class="extraInfo">Extra Info</p>
     <mat-card id="matCardExt" class="mat-elevation-z10">
       <mat-card class="mat-elevation-z5" *ngIf="!validateSpecies">
         <h1 class="mat-headline">Homeworld</h1>

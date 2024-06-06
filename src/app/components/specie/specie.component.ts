@@ -82,5 +82,7 @@ export class SpecieComponent implements OnInit {
           this.peoples.push(data)
         })
     })
+    //Scrolls down page at click
+    window.scrollTo(0,document.body.scrollHeight);
   }
 }
