@@ -17,7 +17,6 @@ h2 {
 }
 
 #matCardExt {
-  background-color: #f6f6f6;
   display: flex;
   justify-content: center;
   width: 90%;
@@ -31,14 +30,8 @@ h2 {
   text-align: center;
 }
 
-.listCard {
+mat-card .listCard {
   margin: 2%;
-}
-
-mat-card-header {
-  display: flex;
-  justify-content: center;
-  margin: auto;
 }
 
 .mat-headline {
@@ -47,10 +40,15 @@ mat-card-header {
   font-weight: bolder;
   text-align: center;
   margin: auto;
+  margin-bottom: 3% !important;
 }
 
 mat-card mat-card p {
   color: #3a3a3a;
+}
+
+mat-card .mat-elevation-z5 {
+  margin-left: 2%;
 }
 
 .mat-row:hover .mat-cell {
@@ -83,5 +81,5 @@ mat-toolbar p{
   font-size: large;
   margin-left: 36%;
   margin-bottom: 8px;
-  color: yellow;
+  /* color: yellow; */
 }

@@ -98,7 +98,7 @@
         <h1 class="mat-headline">Homeworld</h1>
         <ul *ngFor="let planet of planets">
           <mat-card class="listCard">
-            <li>{{planet.name}}</li>
+            <p>{{planet.name}}</p>
           </mat-card>
         </ul>
       </mat-card>
@@ -106,7 +106,7 @@
         <p class="mat-headline">Was featured on</p>
         <ul *ngFor="let film of films">
           <mat-card class="listCard">
-            <li>{{film.title}}</li>
+            <p>{{film.title}}</p>
           </mat-card>
         </ul>
       </mat-card>
@@ -114,7 +114,7 @@
         <p class="mat-headline">Specie</p>
         <ul *ngFor="let specie of species">
           <mat-card class="listCard">
-            <li>{{specie.name}}</li>
+            <p>{{specie.name}}</p>
           </mat-card>
         </ul>
       </mat-card>
@@ -122,7 +122,7 @@
         <p class="mat-headline">Starships related</p>
         <ul *ngFor="let starship of starships">
           <mat-card class="listCard">
-            <li>{{starship.name}}</li>
+            <p>{{starship.name}}</p>
           </mat-card>
         </ul>
       </mat-card>
@@ -130,12 +130,18 @@
         <p class="mat-headline">Vehicles related</p>
         <ul *ngFor="let vehicle of vehicles">
           <mat-card class="listCard">
-            <li>{{vehicle.name}}</li>
+            <p>{{vehicle.name}}</p>
           </mat-card>
         </ul>
       </mat-card>
-      <mat-card *ngIf="validateSpecies && validateStarships && validateVehicles">
+      <mat-card class="no-data" *ngIf="clickedRows.size && validateSpecies && validateStarships && validateVehicles && showCard">
         <p>No data</p>
+      </mat-card>
+      <mat-card class="no-data" *ngIf="clickedRows.size && validateSpecies && validateStarships && validateVehicles && !showCard">
+        <mat-spinner></mat-spinner>
+      </mat-card>
+      <mat-card *ngIf="!clickedRows.size">
+        <p>Click one item of the list</p>
       </mat-card>
     </mat-card>
   </mat-card>

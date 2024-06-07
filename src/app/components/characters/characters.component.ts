@@ -27,6 +27,7 @@ export class CharactersComponent implements OnInit {
   clickedRows = new Set<People>();
   selectedRow: any;
   isLoading = true;
+  showCard = false;
   validateSpecies = true;
   validateStarships = true;
   validateVehicles = true;
@@ -59,6 +60,7 @@ export class CharactersComponent implements OnInit {
     this.validateSpecies = true;
     this.validateStarships = true;
     this.validateVehicles = true;
+    this.showCard = false;
 }
 
   //This method collects all data from SWAPI
@@ -98,7 +100,7 @@ export class CharactersComponent implements OnInit {
     people.films.forEach(film => {
       this.serviceServices.getFilm(parseInt(this.collectUrlId(film)))
         .subscribe((data) => {
-          this.films.push(data)
+            this.films.push(data)
         })
     })
     people.starships.forEach(star => {
@@ -128,6 +130,9 @@ export class CharactersComponent implements OnInit {
           }
         })
     })
+    setTimeout(() => {
+      this.showCard = true;
+    }, 10000);
     //Scrolls down page at click
     window.scrollTo(0,document.body.scrollHeight);
   }

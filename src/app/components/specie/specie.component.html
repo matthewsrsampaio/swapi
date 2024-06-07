@@ -6,116 +6,119 @@
 </div>
 
 <body *ngIf="!isLoading">
-  <!--Filter-->
-  <mat-form-field appearance="legacy" class="filter">
-    <mat-label>Filter</mat-label>
-    <input (keyup)="applyFilter($event)" matInput #input>
-  </mat-form-field>
+  <mat-card>
+    <!--Filter-->
+    <mat-form-field appearance="legacy" class="filter">
+      <mat-label>Filter</mat-label>
+      <input (keyup)="applyFilter($event)" matInput #input>
+    </mat-form-field>
 
-  <!--Table start with the information about the data I'm pulling-->
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z10 demo-table bg-opacity-50">
+    <!--Table start with the information about the data I'm pulling-->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z10 demo-table bg-opacity-50">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element">{{element.name}}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
 
-    <!-- Climate Column -->
-    <ng-container matColumnDef="skinColor">
-      <th mat-header-cell *matHeaderCellDef> Skin color </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.skin_colors}} </td>
-    </ng-container>
+      <!-- Climate Column -->
+      <ng-container matColumnDef="skinColor">
+        <th mat-header-cell *matHeaderCellDef> Skin color </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.skin_colors}} </td>
+      </ng-container>
 
-    <!-- Gravity Column -->
-    <ng-container matColumnDef="eyeColor">
-      <th mat-header-cell *matHeaderCellDef> Eye color </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.eye_colors}} </td>
-    </ng-container>
+      <!-- Gravity Column -->
+      <ng-container matColumnDef="eyeColor">
+        <th mat-header-cell *matHeaderCellDef> Eye color </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.eye_colors}} </td>
+      </ng-container>
 
-    <!-- Rotation Column -->
-    <ng-container matColumnDef="hairColor">
-      <th mat-header-cell *matHeaderCellDef> Hair color </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.hair_colors}} </td>
-    </ng-container>
+      <!-- Rotation Column -->
+      <ng-container matColumnDef="hairColor">
+        <th mat-header-cell *matHeaderCellDef> Hair color </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.hair_colors}} </td>
+      </ng-container>
 
-    <!--Average height Column-->
-    <ng-container matColumnDef="averageHeight">
-      <th mat-header-cell *matHeaderCellDef> Average height </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.average_height}} </td>
-    </ng-container>
+      <!--Average height Column-->
+      <ng-container matColumnDef="averageHeight">
+        <th mat-header-cell *matHeaderCellDef> Average height </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.average_height}} </td>
+      </ng-container>
 
-    <!--Average lifespan Column-->
-    <ng-container matColumnDef="averageLifespan">
-      <th mat-header-cell *matHeaderCellDef> Average lifespan </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.average_lifespan}} </td>
-    </ng-container>
+      <!--Average lifespan Column-->
+      <ng-container matColumnDef="averageLifespan">
+        <th mat-header-cell *matHeaderCellDef> Average lifespan </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.average_lifespan}} </td>
+      </ng-container>
 
-    <!--Classification Column-->
-    <ng-container matColumnDef="classification">
-      <th mat-header-cell *matHeaderCellDef> Classification </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.classification}} </td>
-    </ng-container>
+      <!--Classification Column-->
+      <ng-container matColumnDef="classification">
+        <th mat-header-cell *matHeaderCellDef> Classification </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.classification}} </td>
+      </ng-container>
 
-    <!--Language Column-->
-    <ng-container matColumnDef="language">
-      <th mat-header-cell *matHeaderCellDef> Language </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.language}} </td>
-    </ng-container>
+      <!--Language Column-->
+      <ng-container matColumnDef="language">
+        <th mat-header-cell *matHeaderCellDef> Language </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.language}} </td>
+      </ng-container>
 
-    <!--Designation Column-->
-    <ng-container matColumnDef="designation">
-      <th mat-header-cell *matHeaderCellDef> Designation </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.designation}} </td>
-    </ng-container>
+      <!--Designation Column-->
+      <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef> Designation </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.designation}} </td>
+      </ng-container>
 
-    <!--Created Column-->
-    <ng-container matColumnDef="created">
-      <th mat-header-cell *matHeaderCellDef> Created </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.created | date}} </td>
-    </ng-container>
+      <!--Created Column-->
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef> Created </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.created | date}} </td>
+      </ng-container>
 
-    <!--Edited Column-->
-    <ng-container matColumnDef="edited">
-      <th mat-header-cell *matHeaderCellDef> Edited </th>
-      <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.edited | date}} </td>
-    </ng-container>
+      <!--Edited Column-->
+      <ng-container matColumnDef="edited">
+        <th mat-header-cell *matHeaderCellDef> Edited </th>
+        <td mat-cell (click)="onClick(element)" *matCellDef="let element"> {{element.edited | date}} </td>
+      </ng-container>
 
-    <!--Table's click control-->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row
-        (click)="selectRow(row)"
-        (dblclick)="clickedRows.delete(row)"
-        [class.demo-row-is-clicked]="clickedRows.has(row)"
-        *matRowDef="let row; columns: displayedColumns;"
-    ></tr>
+      <!--Table's click control-->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row
+          (click)="selectRow(row)"
+          (dblclick)="clickedRows.delete(row)"
+          [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
 
-    <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
-      </tr>
-  </table>
+      <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4" *ngIf="!isLoading">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
 
-  <!--Extra information that pops when a row is clicked-->
-  <mat-card-header class="mat-card-header" *ngIf="clickedRows.size">
-    <p class="mat-headline">Extra Info</p>
-  </mat-card-header>
-  <mat-card id="matCardExt" class="mat-elevation-z10" *ngIf="clickedRows.size">
-    <mat-card class="mat-elevation-z5">
-      <p class="mat-headline">Was featured on</p>
-      <ul *ngFor="let film of films">
-        <mat-card class="listCard">
-          <li>{{film.title}}</li>
-        </mat-card>
-      </ul>
-    </mat-card>
-    <mat-card class="mat-elevation-z5">
-      <p class="mat-headline">Characters</p>
-      <ul *ngFor="let people of peoples">
-        <mat-card class="listCard">
-          <li>{{people.name}}</li>
-        </mat-card>
-      </ul>
+    <!--Extra information that pops when a row is clicked-->
+    <p class="extraInfo">Extra Info</p>
+    <mat-card id="matCardExt" class="mat-elevation-z10">
+      <mat-card class="mat-elevation-z5" *ngIf="clickedRows.size">
+        <p class="mat-headline">Was featured on</p>
+        <ul *ngFor="let film of films">
+          <mat-card class="listCard">
+            <li>{{film.title}}</li>
+          </mat-card>
+        </ul>
+      </mat-card>
+      <mat-card class="mat-elevation-z5" *ngIf="clickedRows.size">
+        <p class="mat-headline">Characters</p>
+        <ul *ngFor="let people of peoples">
+          <mat-card class="listCard">
+            <li>{{people.name}}</li>
+          </mat-card>
+        </ul>
+      </mat-card>
+      <mat-card *ngIf="!clickedRows.size">
+        <p>Click one item of the list</p>
+      </mat-card>
     </mat-card>
   </mat-card>
 </body>
